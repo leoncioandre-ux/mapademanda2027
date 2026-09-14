@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -295,16 +294,22 @@ function fillFilterOptions(){
 function filtered(){
  return DATA.filter(d=>Object.entries(fields).every(([id,k])=>!$(id).value||String(d[k])===$(id).value));
 }
+function isRealClass(d){
+ return String(d['Nº Classe'] ?? '').trim().toLowerCase() !== 'sala disp.';
+}
 function metrics(a){
  let al=a.reduce((s,d)=>s+num(d.Alunos),0),cap=a.reduce((s,d)=>s+num(d.Capacidade),0);
- return {al,cap,cl:a.length,es:new Set(a.map(d=>d.Escola)).size,sa:cap-al,oc:cap?al/cap*100:0};
+ let cl=a.filter(isRealClass).length;
+ return {al,cap,cl,es:new Set(a.map(d=>d.Escola)).size,sa:cap-al,oc:cap?al/cap*100:0};
 }
 function group(a,k){
  const g={};
  a.forEach(d=>{
    const x=d[k]||'Não informado';
    g[x]??={al:0,cap:0,cl:0,es:new Set()};
-   g[x].al+=num(d.Alunos);g[x].cap+=num(d.Capacidade);g[x].cl+=1;g[x].es.add(d.Escola);
+   g[x].al+=num(d.Alunos);g[x].cap+=num(d.Capacidade);
+   if(isRealClass(d)) g[x].cl+=1;
+   g[x].es.add(d.Escola);
  });
  return g;
 }
@@ -455,7 +460,8 @@ function renderStageDetail(){
    bySchool[e]??={reg:new Set(),manha:0,tarde:0,cl:0,al:0,cap:0};
    const q=bySchool[e];
    if(d['Região']) q.reg.add(String(d['Região']).trim());
-   q.cl+=1; q.al+=num(d.Alunos); q.cap+=num(d.Capacidade);
+   if(isRealClass(d)) q.cl+=1;
+   q.al+=num(d.Alunos); q.cap+=num(d.Capacidade);
    if(String(d['Período']).toLowerCase()==='manhã') q.manha+=num(d.Alunos);
    if(String(d['Período']).toLowerCase()==='tarde') q.tarde+=num(d.Alunos);
  });
