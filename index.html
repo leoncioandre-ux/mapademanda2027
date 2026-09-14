@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -270,32 +271,70 @@ const num=v=>{let x=Number(v);return Number.isFinite(x)?x:0};
 const fields={freg:'Região',fesc:'Escola',feta:'Etapa',fper:'Período',ftipo:'Tipo de Ensino'};
 const nomesRegiao={'1':'Norte','2':'Sul','3':'Leste','4':'Oeste','5':'Centro','Norte':'Norte','Sul':'Sul','Leste':'Leste','Oeste':'Oeste','Centro':'Centro'};
 
+function normalizeEtapa(v){
+  const s=String(v??'').trim();
+  if(!s || s==='#N/A') return s;
+  return s.replace(/\s+Int\.?$/i,'').trim();
+}
+
+function normalizePeriodo(v){
+  const s=String(v??'').trim();
+  const t=s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  if(t.includes('integral')) return 'Integral';
+  if(t==='manha') return 'Manhã';
+  if(t==='tarde') return 'Tarde';
+  return s;
+}
+
+function filterValue(d,k){
+  if(k==='Etapa') return normalizeEtapa(d[k]);
+  if(k==='Período') return normalizePeriodo(d[k]);
+  if(k==='Região') return nomesRegiao[String(d[k])] || String(d[k]??'').trim();
+  return String(d[k]??'').trim();
+}
+
 function fillFilterOptions(){
- const current=Object.fromEntries(Object.keys(fields).map(id=>[id,$(id).value]));
- for(const id in fields){
-   const s=$(id), k=fields[id], currentValue=current[id];
-   const available=DATA.filter(d=>Object.entries(fields).every(([otherId,otherK])=>
-     otherId===id || !current[otherId] || String(d[otherK])===String(current[otherId])
-   ));
-   const values=[...new Set(available.map(d=>d[k]).filter(v=>{
-     const s=String(v??'').trim();
-     return s!=='' && s!=='#N/A';
-   }))]
-     .sort((a,b)=>String(a).localeCompare(String(b),'pt-BR'));
-   const allLabel=(k==='Período'||k==='Tipo de Ensino')?'Todos':'Todas';
-   s.innerHTML=`<option value="">${allLabel}</option>`;
-   values.forEach(v=>{
-     const label=(k==='Região' && nomesRegiao[String(v)]) ? nomesRegiao[String(v)] : v;
-     s.innerHTML+=`<option value="${esc(v)}">${esc(label)}</option>`;
-   });
-   if(values.some(v=>String(v)===String(currentValue))) s.value=currentValue;
- }
+  const current=Object.fromEntries(Object.keys(fields).map(id=>[id,$(id).value]));
+  for(const id in fields){
+    const s=$(id), k=fields[id], currentValue=current[id];
+    const available=DATA.filter(d=>Object.entries(fields).every(([otherId,otherK])=>
+      otherId===id || !current[otherId] || filterValue(d,otherK)===String(current[otherId])
+    ));
+    let values;
+    if(k==='Etapa'){
+      values=[...new Set(available.map(d=>normalizeEtapa(d[k])).filter(v=>v && v!=='#N/A'))]
+        .sort((a,b)=>String(a).localeCompare(String(b),'pt-BR'));
+    }else if(k==='Período'){
+      values=[...new Set(available.map(d=>normalizePeriodo(d[k])).filter(v=>v && v!=='#N/A'))]
+        .sort((a,b)=>String(a).localeCompare(String(b),'pt-BR'));
+      if(values.includes('Manhã') || values.includes('Tarde')) values=['Parcial',...values.filter(v=>v!=='Parcial')];
+    }else{
+      values=[...new Set(available.map(d=>d[k]).filter(v=>{
+        const s=String(v??'').trim();
+        return s!=='' && s!=='#N/A';
+      }))].sort((a,b)=>String(a).localeCompare(String(b),'pt-BR'));
+    }
+    const allLabel=(k==='Período'||k==='Tipo de Ensino')?'Todos':'Todas';
+    s.innerHTML=`<option value="">${allLabel}</option>`;
+    values.forEach(v=>{
+      const label=(k==='Região' && nomesRegiao[String(v)]) ? nomesRegiao[String(v)] : v;
+      s.innerHTML+=`<option value="${esc(v)}">${esc(label)}</option>`;
+    });
+    if([...s.options].some(o=>o.value===String(currentValue))) s.value=currentValue;
+  }
 }
 function filtered(){
- return DATA.filter(d=>Object.entries(fields).every(([id,k])=>!$(id).value||String(d[k])===$(id).value));
+  return DATA.filter(d=>Object.entries(fields).every(([id,k])=>{
+    const selected=$(id).value;
+    if(!selected) return true;
+    const value=filterValue(d,k);
+    if(k==='Período' && selected==='Parcial') return value==='Manhã' || value==='Tarde';
+    return value===selected;
+  }));
 }
 function isRealClass(d){
- return String(d['Nº Classe'] ?? '').trim().toLowerCase() !== 'sala disp.';
+ const etapa=String(d['Etapa']??'').trim().toLowerCase();
+ return etapa!=='sala disp.';
 }
 function metrics(a){
  let al=a.reduce((s,d)=>s+num(d.Alunos),0),cap=a.reduce((s,d)=>s+num(d.Capacidade),0);
@@ -305,7 +344,7 @@ function metrics(a){
 function group(a,k){
  const g={};
  a.forEach(d=>{
-   const x=d[k]||'Não informado';
+   const x=(k==='Etapa'?normalizeEtapa(d[k]):k==='Período'?normalizePeriodo(d[k]):(d[k]||'Não informado'));
    g[x]??={al:0,cap:0,cl:0,es:new Set()};
    g[x].al+=num(d.Alunos);g[x].cap+=num(d.Capacidade);
    if(isRealClass(d)) g[x].cl+=1;
@@ -401,7 +440,7 @@ function renderSchoolDetail(){
  $('schoolDetailTable').innerHTML=a.map(d=>{
    const saldo=num(d.Capacidade)-num(d.Alunos);
    return `<tr>
-     <td>${esc(d.Etapa)}</td><td>${esc(d['Período'])}</td><td>${esc(d.Turma)}</td>
+     <td>${esc(normalizeEtapa(d.Etapa))}</td><td>${esc(normalizePeriodo(d['Período']))}</td><td>${esc(d.Turma)}</td>
      <td>${esc(d['Nº Classe'])}</td><td class="num">${n(d.Alunos)}</td>
      <td class="num">${n(d.Capacidade)}</td><td class="num">${saldo<0?'−':''}${n(Math.abs(saldo))}</td>
    </tr>`;
@@ -416,14 +455,14 @@ function stage(){
    sel.dataset.ready='1';
    sel.onchange=()=>renderStageDetail();
  }
- if(!sel.value) sel.value=stages.find(s=>filtered().some(d=>String(d.Etapa)===s)) || stages[0];
+ if(!sel.value) sel.value=stages.find(s=>filtered().some(d=>normalizeEtapa(d.Etapa)===s)) || stages[0];
  renderStageDetail();
 }
 
 function renderStageDetail(){
  const selected=$('stageSelect').value;
  if(!selected) return;
- const a=filtered().filter(d=>String(d.Etapa)===String(selected));
+ const a=filtered().filter(d=>normalizeEtapa(d.Etapa)===String(selected));
  const m=metrics(a);
 
  $('stageKpis').innerHTML=[
