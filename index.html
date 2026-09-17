@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -8,22 +7,23 @@
 <style>
 *{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f6f9;color:#14243a}
 aside{position:fixed;left:0;top:0;bottom:0;width:238px;background:#102b46;color:white;padding:18px 11px;z-index:5}
-.brand{padding:8px 12px 22px;border-bottom:1px solid #ffffff30;font-weight:bold;line-height:1.25} .brand span{font-size:11px;opacity:.7;font-weight:normal}
-nav{margin-top:18px}nav button{width:100%;padding:12px;text-align:left;background:none;border:0;color:white;border-radius:8px;cursor:pointer;font-size:13px}nav button.active,nav button:hover{background:#146bc1}
-main{margin-left:238px;padding:0 18px 34px} .top{height:78px;background:white;margin:0 -18px 14px;padding:0 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e7edf2}
+.brand{padding:8px 12px 22px;border-bottom:1px solid #ffffff30;font-weight:700;line-height:1.25}.brand .brand-title{font-size:17px;letter-spacing:.2px}.brand span{display:block;font-size:11px;opacity:.72;font-weight:normal;margin-top:4px}
+nav{margin-top:18px}nav button{width:100%;padding:11px 12px;text-align:left;background:none;border:0;color:white;border-radius:8px;cursor:pointer;font-size:13px;display:flex;align-items:center;gap:10px;transition:background .15s ease}nav button.active,nav button:hover{background:#146bc1}.nav-icon{width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 20px;color:#fff}.nav-icon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+main{margin-left:238px;padding:0 18px 34px} .header-status{font-size:13px;line-height:1.45;text-align:right}.header-status b{font-weight:700}.update-date{margin-top:5px;font-size:12px;color:#6b7785}.update-date b{font-weight:600}.top{min-height:86px;background:white;margin:0 -18px 14px;padding:10px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e7edf2;gap:18px}.header-brand{display:flex;align-items:center;gap:16px;min-width:0}.prefeitura-logo{height:62px;width:auto;object-fit:contain;flex:0 0 auto;filter:brightness(0) saturate(100%) invert(15%) sepia(35%) saturate(1850%) hue-rotate(174deg) brightness(91%) contrast(94%)}.header-divider{width:1px;height:54px;background:#d9e2ea;flex:0 0 auto}
 h1{font-size:12px;margin:0 0 3px;letter-spacing:.3px} .sub{font-size:23px;font-weight:bold} .muted{color:#68798b;font-size:11px}
 .filters{display:grid;grid-template-columns:repeat(5,1fr) 125px;gap:9px;margin-bottom:13px} .filter,.card,.kpi{background:white;border:1px solid #e5ebf0;border-radius:10px;box-shadow:0 3px 14px #102b4610}
 .filter{padding:9px} .filter label{font-size:10px;font-weight:bold;display:block;margin-bottom:5px} .filter select,.filter input{width:100%;padding:7px;border:1px solid #d7e0e8;border-radius:7px;background:white}
 .clear{border:0;border-radius:9px;background:#e7eef4;font-weight:bold;cursor:pointer}
 .page{display:none} .page.active{display:block} .head{margin:5px 2px 12px} .head h2{margin:0;font-size:20px} 
 .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-bottom:12px} .kpi{padding:12px} .kpi small{color:#68798b;font-size:10px} .kpi strong{display:block;font-size:22px;margin-top:5px}
-.grid{display:grid;grid-template-columns:1.35fr 1fr 1.2fr;gap:10px} .card{padding:14px} .card h3{margin:0 0 12px;font-size:14px}
-table{width:100%;border-collapse:collapse;font-size:10px} .table{overflow:auto} th{background:#edf2f6;padding:8px;text-align:left;white-space:nowrap} td{padding:8px;border-top:1px solid #edf1f4} .num{text-align:center}
+.grid{display:grid;grid-template-columns:1.35fr 1.1fr 1.2fr;gap:10px} .card{padding:14px} .card h3{margin:0 0 12px;font-size:14px}
+table{width:100%;border-collapse:collapse;font-size:10px} .table{overflow:auto} th{background:#edf2f6;padding:8px;text-align:left;white-space:nowrap} th:not(:first-child),td.num{text-align:center} td{padding:8px;border-top:1px solid #edf1f4} .num{text-align:center}
+.capacity-wrap{display:flex;align-items:center;justify-content:center;gap:22px;min-height:210px}.donut{--occupied:74;position:relative;width:150px;height:150px;border-radius:50%;background:conic-gradient(#2185e6 calc(var(--occupied)*1%),#55c98b 0);display:flex;align-items:center;justify-content:center;flex:0 0 150px}.donut::after{content:"";width:94px;height:94px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px #eef2f5;position:absolute}.donut-center{position:relative;z-index:1;text-align:center;font-weight:bold;font-size:22px;color:#14243a}.donut-center span{display:block;font-size:9px;font-weight:normal;color:#68798b;margin-top:2px}.capacity-legend{min-width:145px}.capacity-item{display:grid;grid-template-columns:12px 1fr;column-gap:8px;align-items:start;margin:10px 0}.capacity-dot{width:12px;height:12px;border-radius:50%;margin-top:3px}.capacity-dot.blue{background:#2185e6}.capacity-dot.green{background:#55c98b}.capacity-dot.gray{background:#b9c3cf}.capacity-item small{display:block;color:#68798b;font-size:9px}.capacity-item b{font-size:16px}
 .barrow{display:grid;grid-template-columns:92px minmax(0,1fr) auto;align-items:center;column-gap:8px;margin:12px 0} .barrow span:first-child{width:92px;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .bar{height:13px;background:#2d86d8;border-radius:4px;min-width:2px} .barrow b{font-size:10px}
 .list{max-height:520px;overflow:auto} .school{display:block;width:100%;text-align:left;background:white;border:0;border-bottom:1px solid #eee;padding:10px;cursor:pointer} .school:hover{background:#eef5fb}
 .insights{display:grid;grid-template-columns:repeat(3,1fr);gap:10px} .insight{background:white;border:1px solid #e7edf2;border-radius:10px;padding:14px} .insight b{font-size:12px} .insight p{font-size:11px;color:#68798b;line-height:1.5}
 .badge{display:inline-block;padding:3px 7px;border-radius:12px;background:#edf4fa;font-size:10px;margin-right:4px}
-@media(max-width:1050px){aside{width:205px}main{margin-left:205px}.filters,.kpis{grid-template-columns:repeat(3,1fr)}.grid,.insights{grid-template-columns:1fr}}
+@media(max-width:1050px){aside{width:205px}main{margin-left:205px}.filters,.kpis{grid-template-columns:repeat(3,1fr)}.grid,.insights{grid-template-columns:1fr}.capacity-wrap{justify-content:flex-start}.prefeitura-logo{height:52px;filter:brightness(0) saturate(100%) invert(15%) sepia(35%) saturate(1850%) hue-rotate(174deg) brightness(91%) contrast(94%)}.sub{font-size:20px}}
 </style>
 
 <style>
@@ -34,25 +34,31 @@ padding:7px 11px;border-radius:8px;font-size:10px;color:#68798b;box-shadow:0 3px
 </head>
 <body>
 <aside>
-<div class="brand">✦ PREFEITURA<br>FRANCA<br><span>Secretaria Municipal de Educação</span></div>
+<div class="brand"><div class="brand-title">REDE MUNICIPAL</div><span>Secretaria Municipal de Educação</span></div>
 <nav>
-<button data-page="overview" class="active">⌂ &nbsp; Visão Geral</button>
-<button data-page="school">▣ &nbsp; Por Escola</button>
-<button data-page="stage">▥ &nbsp; Por Etapa</button>
-<button data-page="region">● &nbsp; Por Região</button>
-<button data-page="period">◷ &nbsp; Por Período</button>
-<button data-page="list">☷ &nbsp; Lista de Demanda</button>
-<button data-page="compare">⌁ &nbsp; Comparativos</button>
-<button data-page="data">▤ &nbsp; Dados da Rede</button>
-<button data-page="about">i &nbsp; Sobre</button>
+<button data-page="overview" class="active"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></span>Visão Geral</button>
+<button data-page="school"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V5h14v16"/><path d="M8 8h2M14 8h2M8 12h2M14 12h2M8 16h2M14 16h2"/></svg></span>Por Escola</button>
+<button data-page="stage"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 19V9"/><path d="M10 19V5"/><path d="M16 19v-7"/><path d="M22 19V3"/></svg></span>Por Etapa</button>
+<button data-page="region"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></span>Por Região</button>
+<button data-page="period"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg></span>Por Período</button>
+<button data-page="vacancies"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5h16v14"/><path d="M8 9h8M8 13h5"/><path d="M15 17h5"/><path d="M17 14v6"/></svg></span>Vagas Disponíveis</button>
+
+<button data-page="contacts"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M7 8h10M7 12h7M7 16h5"/></svg></span>Contatos das Unidades</button>
+<button data-page="list"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg></span>Lista de Demanda</button>
+<button data-page="compare"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="m4 16 5-5 4 3 7-8"/><path d="M17 6h3v3"/></svg></span>Comparativos</button>
+<button data-page="about"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10v6"/><path d="M12 7h.01"/></svg></span>Sobre</button>
 </nav>
 </aside>
 
 <main>
 <div class="source-badge">Fonte: <a href="https://docs.google.com/spreadsheets/d/1mAwMQr5byOsyay6Uj42-HFEHas5Aw0977K-EvtuQeNs/edit?gid=0#gid=0" target="_blank">Google Sheets · data_rede_geral_dash</a></div>
 <div class="top">
-  <div><h1>SECRETARIA MUNICIPAL DE EDUCAÇÃO</h1><div class="sub">Mapa de Demanda 2027</div></div>
-  <div class="muted">Base integrada<br><b id="base"></b></div>
+  <div class="header-brand">
+    <img class="prefeitura-logo" src="https://www3.franca.sp.gov.br/images/8fa208a68514fba96a55c7d397862c8b.png" alt="Prefeitura de Franca">
+    <div class="header-divider"></div>
+    <div><h1>SECRETARIA MUNICIPAL DE EDUCAÇÃO</h1><div class="sub">Mapa de Demanda 2027</div><div class="muted">Dados para o planejamento da rede municipal de ensino</div></div>
+  </div>
+  <div class="muted header-status"><div></div><b id="base"></b><div class="update-date">Última atualização: <b id="lastUpdate">17/09/2026</b></div></div>
 </div>
 
 <div class="filters">
@@ -130,6 +136,14 @@ padding:7px 11px;border-radius:8px;font-size:10px;color:#68798b;box-shadow:0 3px
 <div class="card table"><input id="search" placeholder="Buscar escola, etapa, turma ou região..." style="padding:8px;width:290px;border:1px solid #d7e0e8;border-radius:7px;margin-bottom:10px">
 <table><thead><tr><th>Escola</th><th>Região</th><th>Período</th><th>Etapa</th><th>Turma</th><th>Classe</th><th>Alunos</th><th>Capacidade</th><th>Saldo</th></tr></thead><tbody id="listTable"></tbody></table></div></section>
 
+<section class="page" id="vacancies">
+<div class="head"><h2>Vagas Disponíveis</h2><p class="muted">Consulta das vagas disponíveis na rede a partir da capacidade e do número de alunos.</p></div>
+<div class="kpis" id="vacancyKpis"></div>
+<div class="card table" style="margin-top:10px">
+<h3>Distribuição de Vagas</h3>
+<table><thead><tr><th>Escola</th><th>Região</th><th>Etapa</th><th>Período</th><th>Turma</th><th>Nº Classe</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th></tr></thead><tbody id="vacancyTable"></tbody></table></div>
+</section>
+
 <section class="page" id="compare"><div class="head"><h2>Comparativos</h2><p class="muted">Área preparada para cruzamentos históricos e entre sistemas.</p></div>
 <div class="insights">
 <div class="insight"><b>2027 × 2026</b><p>Comparar alunos, classes, capacidade e ocupação entre os anos.</p></div>
@@ -137,15 +151,34 @@ padding:7px 11px;border-radius:8px;font-size:10px;color:#68798b;box-shadow:0 3px
 <div class="insight"><b>Variações</b><p>Exibir diferenças absolutas e percentuais por escola, etapa e região.</p></div>
 </div></section>
 
-<section class="page" id="data"><div class="head"><h2>Dados da Rede</h2><p class="muted">Qualidade e preenchimento da base atualmente carregada.</p></div>
-<div class="card table"><table><thead><tr><th>Campo</th><th>Preenchidos</th><th>Vazios</th></tr></thead><tbody id="dataTable"></tbody></table></div></section>
 
-<section class="page" id="about"><div class="head"><h2>Sobre</h2><p class="muted">Mapa de Demanda 2027 — Secretaria Municipal de Educação de Franca.</p></div>
-<div class="insights">
-<div class="insight"><b>Objetivo</b><p>Transformar os dados do Mapa de Demanda em informação visual para apoiar planejamento e tomada de decisão.</p></div>
-<div class="insight"><b>Fonte</b><p>Base central do Mapa de Demanda 2027.</p></div>
-<div class="insight"><b>Atualização</b><p>O dashboard foi estruturado para utilizar uma base única consolidada.</p></div>
-</div></section>
+<section class="page" id="contacts">
+<div class="head">
+  <h2>Contatos das Unidades</h2>
+  <p class="muted">Consulte os endereços e informações das unidades da Rede Municipal de Ensino.</p>
+</div>
+<div class="card" style="padding:0;overflow:hidden">
+  <iframe id="iframe-escolas" src="https://leoncioandre-ux.github.io/encontreumaescola/" style="width:100%;min-height:20000px;border:0;" title="Encontre uma Escola Municipal" loading="lazy"></iframe>
+</div>
+</section>
+<section class="page" id="about">
+<div class="head"><h2>Sobre o Mapa de Demanda 2027</h2><p class="muted">Informações sobre a ferramenta, seus dados e canais de contato.</p></div>
+<div class="insights" style="grid-template-columns:1fr 1fr">
+  <div class="insight" style="grid-column:1 / -1">
+    <h3>Desenvolvimento</h3>
+    <p>O Mapa de Demanda 2027 foi desenvolvido pela equipe do <b>Setor de Gerenciamento de Receitas da Educação</b>, da Secretaria Municipal de Educação de Franca, com a participação de <b>André, Lara, Fernanda e Larissa</b>.</p>
+    <p>Os dados apresentados nesta ferramenta são resultado da gestão e escrituração realizadas pelas unidades escolares da Rede Municipal de Ensino no <b>Sistema de Gestão</b>. A ferramenta foi desenvolvida para organizar, consolidar e facilitar a visualização dessas informações, contribuindo para o acompanhamento da demanda e o planejamento da rede municipal de ensino.</p>
+  </div>
+  <div class="insight">
+    <h3>Alguma sugestão?</h3>
+    <p>Caso identifique alguma divergência nos dados apresentados ou queira sugerir um novo filtro, indicador ou funcionalidade para o dashboard, entre em contato com o Setor de Gerenciamento de Receitas da Educação.</p>
+    <a href="https://wa.me/551637119282" target="_blank" rel="noopener" class="btn" style="display:inline-block;margin-top:8px;text-decoration:none">💬 Entrar em contato pelo WhatsApp</a>
+  </div>
+  <div class="insight" style="grid-column:1 / -1;text-align:center">
+    <p class="muted" style="margin:0"><b>Mapa de Demanda 2027</b><br>Secretaria Municipal de Educação de Franca<br>Setor de Gerenciamento de Receitas da Educação</p>
+  </div>
+</div>
+</section>
 </main>
 
 
@@ -274,7 +307,10 @@ const nomesRegiao={'1':'Norte','2':'Sul','3':'Leste','4':'Oeste','5':'Centro','N
 function normalizeEtapa(v){
   const s=String(v??'').trim();
   if(!s || s==='#N/A') return s;
-  return s.replace(/\s+Int\.?$/i,'').trim();
+  const cleaned=s.replace(/\s+Int\.?$/i,'').trim();
+  // Unifica variações de capitalização de "Sala Disp." vindas da base.
+  if(/^sala\s+disp\.?$/i.test(cleaned)) return 'Sala Disp.';
+  return cleaned;
 }
 
 function normalizePeriodo(v){
@@ -369,7 +405,8 @@ function overview(){
  const sg=group(a,'Etapa'),mx=Math.max(...Object.values(sg).map(x=>x.al),1);
  const ordemEtapas=['Fase 1','Fase 2','1º Ano','2º Ano','3º Ano','4º Ano','5º Ano'];
  $('stages').innerHTML=ordemEtapas.filter(k=>sg[k]).map(k=>[k,sg[k]]).map(([k,v])=>`<div class="barrow"><span title="${esc(k)}">${esc(k)}</span><div class="bar" style="width:${Math.max(v.al/mx*100,1)}%"></div><b>${n(v.al)}</b></div>`).join('');
- $('capacity').innerHTML=`<div style="text-align:center;padding:32px 10px;font-size:28px;font-weight:bold">${m.oc.toFixed(1).replace('.',',')}%<div class="muted">taxa de ocupação</div><div style="margin-top:14px;font-size:11px;font-weight:normal">Alunos: ${n(m.al)}<br>Capacidade: ${n(m.cap)}<br>Vagas Disponíveis: ${n(m.sa)}</div></div>`;
+ const ocup=Math.max(0,Math.min(100,m.oc)); const dispon=Math.max(0,100-ocup);
+  $('capacity').innerHTML=`<div class="capacity-wrap"><div class="donut" style="--occupied:${ocup}"><div class="donut-center">${ocup.toFixed(1).replace('.',',')}%<span>taxa de ocupação</span></div></div><div class="capacity-legend"><div class="capacity-item"><span class="capacity-dot blue"></span><div><small>Alunos (ocupada)</small><b>${n(m.al)}</b><small>${ocup.toFixed(1).replace('.',',')}% da capacidade</small></div></div><div class="capacity-item"><span class="capacity-dot green"></span><div><small>Vagas disponíveis</small><b>${n(m.sa)}</b><small>${dispon.toFixed(1).replace('.',',')}% da capacidade</small></div></div><div class="capacity-item"><span class="capacity-dot gray"></span><div><small>Capacidade total</small><b>${n(m.cap)}</b></div></div></div></div>`;
  const rg=group(a,'Região'),rm=Math.max(...Object.values(rg).map(x=>x.al),1);
  const nomesRegiao={'1':'Norte','2':'Sul','3':'Leste','4':'Oeste','5':'Centro','Norte':'Norte','Sul':'Sul','Leste':'Leste','Oeste':'Oeste','Centro':'Centro'};
  $('regions').innerHTML=Object.entries(rg)
@@ -530,7 +567,15 @@ function dataPage(){
  const a=filtered(),fs=['Ano','Cod CIE','Escola','Região','Período','Tipo de Ensino','Etapa','Turma','Nº Classe','Alunos','Educação Especial','Transporte','Retidos','Capacidade'];
  $('dataTable').innerHTML=fs.map(f=>{let p=a.filter(d=>d[f]!=null&&d[f]!=='').length;return `<tr><td>${f}</td><td>${n(p)}</td><td>${n(a.length-p)}</td></tr>`}).join('');
 }
-function render(p){if(p==='overview')overview();if(p==='school')school();if(p==='stage')stage();if(p==='region')region();if(p==='period')period();if(p==='list')list();if(p==='data')dataPage();}
+function vacancies(){
+ const a=filtered().map(d=>({...d,_v:num(d.Capacidade)-num(d.Alunos)})).filter(d=>d._v>0).sort((x,y)=>y._v-x._v);
+ const schools=new Set(a.map(d=>d.Escola)).size;
+ const classes=a.filter(isRealClass).length;
+ const total=a.reduce((sum,d)=>sum+d._v,0);
+ $('vacancyKpis').innerHTML=[['↕','Vagas Disponíveis',n(total)],['🏫','Escolas com Vagas',n(schools)],['📚','Classes com Vagas',n(classes)],['%','Ocupação',metrics(filtered()).oc.toFixed(1).replace('.',',')+'%']].map(x=>`<div class="kpi"><small>${x[0]} ${x[1]}</small><strong>${x[2]}</strong></div>`).join('');
+ $('vacancyTable').innerHTML=a.slice(0,1000).map(d=>`<tr><td>${esc(d.Escola)}</td><td>${esc(nomesRegiao[String(d.Região)]||d.Região)}</td><td>${esc(normalizeEtapa(d.Etapa))}</td><td>${esc(normalizePeriodo(d['Período']))}</td><td>${esc(d.Turma)}</td><td>${esc(d['Nº Classe'])}</td><td class="num">${n(d.Alunos)}</td><td class="num">${n(d.Capacidade)}</td><td class="num">${n(d._v)}</td></tr>`).join('');
+}
+function render(p){if(p==='overview')overview();if(p==='school')school();if(p==='stage')stage();if(p==='region')region();if(p==='period')period();if(p==='list')list();if(p==='vacancies')vacancies();if(p==='data')dataPage();}
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$(b.dataset.page).classList.add('active');render(b.dataset.page);
@@ -565,4 +610,15 @@ async function initDashboard(){
 }
 initDashboard();
 </script>
+
+<script>
+window.addEventListener("message", function(event) {
+  if (!event.data || event.data.tipo !== "unidadesEscolaresAltura") return;
+  const iframe = document.getElementById("iframe-escolas");
+  if (iframe && Number(event.data.altura) > 0) {
+    iframe.style.height = Math.ceil(Number(event.data.altura)) + "px";
+  }
+});
+</script>
+
 </body></html>
