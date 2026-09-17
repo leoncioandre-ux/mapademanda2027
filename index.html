@@ -24,6 +24,22 @@ table{width:100%;border-collapse:collapse;font-size:10px} .table{overflow:auto} 
 .insights{display:grid;grid-template-columns:repeat(3,1fr);gap:10px} .insight{background:white;border:1px solid #e7edf2;border-radius:10px;padding:14px} .insight b{font-size:12px} .insight p{font-size:11px;color:#68798b;line-height:1.5}
 .badge{display:inline-block;padding:3px 7px;border-radius:12px;background:#edf4fa;font-size:10px;margin-right:4px}
 @media(max-width:1050px){aside{width:205px}main{margin-left:205px}.filters,.kpis{grid-template-columns:repeat(3,1fr)}.grid,.insights{grid-template-columns:1fr}.capacity-wrap{justify-content:flex-start}.prefeitura-logo{height:52px;filter:brightness(0) saturate(100%) invert(15%) sepia(35%) saturate(1850%) hue-rotate(174deg) brightness(91%) contrast(94%)}.sub{font-size:20px}}
+
+/* Ajustes de apresentação por página */
+#school .school-detail-table th,
+#school .school-detail-table td,
+#vacancies .table th,
+#vacancies .table td,
+#list .table th,
+#list .table td {
+  text-align: center;
+}
+#school #schoolDetailTable td,
+#vacancies #vacancyTable td,
+#list #listTable td {
+  text-align: center;
+}
+
 </style>
 
 <style>
@@ -43,7 +59,7 @@ padding:7px 11px;border-radius:8px;font-size:10px;color:#68798b;box-shadow:0 3px
 <button data-page="period"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg></span>Por Período</button>
 <button data-page="vacancies"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5h16v14"/><path d="M8 9h8M8 13h5"/><path d="M15 17h5"/><path d="M17 14v6"/></svg></span>Vagas Disponíveis</button>
 
-<button data-page="contacts"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M7 8h10M7 12h7M7 16h5"/></svg></span>Contatos das Unidades</button>
+<button data-page="contacts"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M7 8h10M7 12h7M7 16h5"/></svg></span>Rede Física</button>
 <button data-page="list"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg></span>Lista de Demanda</button>
 <button data-page="about"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10v6"/><path d="M12 7h.01"/></svg></span>Sobre</button>
 </nav>
@@ -70,7 +86,7 @@ padding:7px 11px;border-radius:8px;font-size:10px;color:#68798b;box-shadow:0 3px
 </div>
 
 <section class="page active" id="overview">
-<div class="head"><h2>Visão Geral</h2><p class="muted">Panorama consolidado da rede a partir da base central.</p></div>
+<div class="head"><h2>Visão Geral</h2><p class="muted">Panorama consolidado da rede.</p></div>
 <div class="kpis" id="kpis"></div>
 <div class="grid">
   <div class="card"><h3>Alunos por Etapa</h3><div id="stages"></div></div>
@@ -126,14 +142,14 @@ padding:7px 11px;border-radius:8px;font-size:10px;color:#68798b;box-shadow:0 3px
 
 <section class="page" id="region"><div class="head"><h2>Por Região</h2><p class="muted">Leitura territorial da demanda.</p></div>
 <div class="insights" id="regionCards"></div>
-<div class="card table" style="margin-top:10px"><table><thead><tr><th>Região</th><th>Escolas</th><th>Classes</th><th>Alunos</th><th>Capacidade</th><th>Saldo</th><th>Ocupação</th></tr></thead><tbody id="regionTable"></tbody></table></div></section>
+<div class="card table" style="margin-top:10px"><table><thead><tr><th>Região</th><th>Escolas</th><th>Classes</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th><th>Ocupação</th></tr></thead><tbody id="regionTable"></tbody></table></div></section>
 
 <section class="page" id="period"><div class="head"><h2>Por Período</h2><p class="muted">Comparação entre os períodos da rede.</p></div>
-<div class="card table"><table><thead><tr><th>Período</th><th>Escolas</th><th>Classes</th><th>Alunos</th><th>Capacidade</th><th>Saldo</th><th>Ocupação</th></tr></thead><tbody id="periodTable"></tbody></table></div></section>
+<div class="card table"><table><thead><tr><th>Período</th><th>Escolas</th><th>Classes</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th><th>Ocupação</th></tr></thead><tbody id="periodTable"></tbody></table></div></section>
 
-<section class="page" id="list"><div class="head"><h2>Lista de Demanda</h2><p class="muted">Consulta operacional dos registros da base.</p></div>
+<section class="page" id="list"><div class="head"><h2>Lista de Demanda</h2><p class="muted">Consulta por Escola.</p></div>
 <div class="card table"><input id="search" placeholder="Buscar escola, etapa, turma ou região..." style="padding:8px;width:290px;border:1px solid #d7e0e8;border-radius:7px;margin-bottom:10px">
-<table><thead><tr><th>Escola</th><th>Região</th><th>Período</th><th>Etapa</th><th>Turma</th><th>Classe</th><th>Alunos</th><th>Capacidade</th><th>Saldo</th></tr></thead><tbody id="listTable"></tbody></table></div></section>
+<table><thead><tr><th>Escola</th><th>Região</th><th>Período</th><th>Etapa</th><th>Turma</th><th>Classe</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th></tr></thead><tbody id="listTable"></tbody></table></div></section>
 
 <section class="page" id="vacancies">
 <div class="head"><h2>Vagas Disponíveis</h2><p class="muted">Consulta das vagas disponíveis na rede a partir da capacidade e do número de alunos.</p></div>
@@ -143,12 +159,7 @@ padding:7px 11px;border-radius:8px;font-size:10px;color:#68798b;box-shadow:0 3px
 <table><thead><tr><th>Escola</th><th>Região</th><th>Etapa</th><th>Período</th><th>Turma</th><th>Nº Classe</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th></tr></thead><tbody id="vacancyTable"></tbody></table></div>
 </section>
 
-<section class="page" id="contacts">
-<div class="head">
-  <h2>Contatos das Unidades</h2>
-  <p class="muted">Consulte os endereços e informações das unidades da Rede Municipal de Ensino.</p>
-</div>
-<div class="card" style="padding:0;overflow:hidden">
+<section class="page" id="contacts"> <div class="card" style="padding:0;overflow:hidden">
   <iframe id="iframe-escolas" src="https://leoncioandre-ux.github.io/encontreumaescola/" style="width:100%;min-height:20000px;border:0;" title="Encontre uma Escola Municipal" loading="lazy"></iframe>
 </div>
 </section>
@@ -545,7 +556,7 @@ function region(){
  const nomesRegiao={'1':'Norte','2':'Sul','3':'Leste','4':'Oeste','5':'Centro','Norte':'Norte','Sul':'Sul','Leste':'Leste','Oeste':'Oeste','Centro':'Centro'};
  $('regionCards').innerHTML=Object.keys(g).sort((a,b)=>String(a).localeCompare(String(b),'pt-BR')).map(k=>{
    const nome=nomesRegiao[String(k)] || String(k);
-   return `<div class="insight"><b>${esc(nome)}</b><p>${n(g[k].al)} alunos em ${n(g[k].es.size)} escolas, ${n(g[k].cl)} registros.</p></div>`;
+   return `<div class="insight"><b>${esc(nome)}</b><p>${n(g[k].al)} alunos em ${n(g[k].es.size)} escolas, ${n(g[k].cl)} classes.</p></div>`;
  }).join('');
 }
 function period(){ $('periodTable').innerHTML=summary(group(filtered(),'Período')); }
@@ -570,7 +581,7 @@ function render(p){if(p==='overview')overview();if(p==='school')school();if(p===
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$(b.dataset.page).classList.add('active');
- document.getElementById('global-filters').style.display = b.dataset.page === 'contacts' ? 'none' : '';
+ document.getElementById('global-filters').style.display = (b.dataset.page === 'contacts' || b.dataset.page === 'school') ? 'none' : '';
  render(b.dataset.page);
 });
 Object.keys(fields).forEach(id=>$(id).onchange=()=>{
