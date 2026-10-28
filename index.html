@@ -15,15 +15,24 @@ h1{font-size:12px;margin:0 0 3px;letter-spacing:.3px} .sub{font-size:23px;font-w
 .filter{padding:9px} .filter label{font-size:10px;font-weight:bold;display:block;margin-bottom:5px} .filter select,.filter input{width:100%;padding:7px;border:1px solid #d7e0e8;border-radius:7px;background:white}
 .clear{border:0;border-radius:9px;background:#e7eef4;font-weight:bold;cursor:pointer}
 .page{display:none} .page.active{display:block} .head{margin:5px 2px 12px} .head h2{margin:0;font-size:20px} 
-.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-bottom:12px} .kpi{padding:12px} .kpi small{color:#68798b;font-size:10px} .kpi strong{display:block;font-size:22px;margin-top:5px}
-.grid{display:grid;grid-template-columns:1.35fr 1.1fr 1.2fr;gap:10px} .card{padding:14px} .card h3{margin:0 0 12px;font-size:14px}
-table{width:100%;border-collapse:collapse;font-size:10px} .table{overflow:auto} th{background:#edf2f6;padding:8px;text-align:left;white-space:nowrap} th:not(:first-child),td.num{text-align:center} td{padding:8px;border-top:1px solid #edf1f4} .num{text-align:center}
-.capacity-wrap{display:flex;align-items:center;justify-content:center;gap:22px;min-height:210px}.donut{--occupied:74;position:relative;width:150px;height:150px;border-radius:50%;background:conic-gradient(#2185e6 calc(var(--occupied)*1%),#55c98b 0);display:flex;align-items:center;justify-content:center;flex:0 0 150px}.donut::after{content:"";width:94px;height:94px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px #eef2f5;position:absolute}.donut-center{position:relative;z-index:1;text-align:center;font-weight:bold;font-size:22px;color:#14243a}.donut-center span{display:block;font-size:9px;font-weight:normal;color:#68798b;margin-top:2px}.capacity-legend{min-width:145px}.capacity-item{display:grid;grid-template-columns:12px 1fr;column-gap:8px;align-items:start;margin:10px 0}.capacity-dot{width:12px;height:12px;border-radius:50%;margin-top:3px}.capacity-dot.blue{background:#2185e6}.capacity-dot.green{background:#55c98b}.capacity-dot.gray{background:#b9c3cf}.capacity-item small{display:block;color:#68798b;font-size:9px}.capacity-item b{font-size:16px}
-.barrow{display:grid;grid-template-columns:92px minmax(0,1fr) auto;align-items:center;column-gap:8px;margin:12px 0} .barrow span:first-child{width:92px;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .bar{height:13px;background:#2d86d8;border-radius:4px;min-width:2px} .barrow b{font-size:10px}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-bottom:12px} .vacancy-kpis{grid-template-columns:repeat(2,minmax(0,1fr));max-width:720px} .vacancy-charts .card{min-width:0} .kpi{padding:12px} .kpi small{color:#68798b;font-size:12px} .kpi strong{display:block;font-size:26px;margin-top:5px}
+.grid{display:grid;grid-template-columns:1.35fr 1.1fr 1.2fr;gap:10px} .school-summary-card{margin:0 0 8px;padding:5px 12px;background:transparent;border:0;border-radius:0;box-shadow:none}.school-summary-content{display:grid;grid-template-columns:minmax(100px,.7fr) minmax(140px,.8fr) minmax(300px,2fr);gap:10px;align-items:center}.school-summary-item{padding:1px 10px;border-left:1px solid #dfe6ed;min-width:0}.school-summary-item:first-child{border-left:0;padding-left:2px}.school-summary-card h3{display:none}.school-summary-card .badge{padding:2px 6px;font-size:10px;margin:0 2px 0 0}.school-summary-item .muted{font-size:10px}.school-summary-item>div:nth-child(2){font-size:13px!important;font-weight:600}.card{padding:14px} .card h3{margin:0 0 12px;font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:13px} .table{overflow:auto} th{background:#edf2f6;padding:10px 9px;text-align:left;white-space:nowrap;font-size:12px} th:not(:first-child),td.num{text-align:center} td{padding:10px 9px;border-top:1px solid #edf1f4} .num{text-align:center}
+.capacity-wrap{display:flex;align-items:center;justify-content:center;gap:22px;min-height:210px}.donut{--occupied:74;position:relative;width:150px;height:150px;border-radius:50%;background:conic-gradient(#2185e6 calc(var(--occupied)*1%),#55c98b 0);display:flex;align-items:center;justify-content:center;flex:0 0 150px}.donut::after{content:"";width:94px;height:94px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px #eef2f5;position:absolute}.donut-center{position:relative;z-index:1;text-align:center;font-weight:bold;font-size:22px;color:#14243a}.donut-center span{display:block;font-size:9px;font-weight:normal;color:#68798b;margin-top:2px}.capacity-legend{min-width:145px}.capacity-item{display:grid;grid-template-columns:12px 1fr;column-gap:8px;align-items:start;margin:10px 0}.capacity-dot{width:12px;height:12px;border-radius:50%;margin-top:3px}.capacity-dot.blue{background:#2185e6}.capacity-dot.green{background:#55c98b}.capacity-dot.gray{background:#b9c3cf}.capacity-item small{display:block;color:#68798b;font-size:11px}.capacity-item b{font-size:17px}
+.barrow{display:grid;grid-template-columns:92px minmax(0,1fr) auto;align-items:center;column-gap:8px;margin:12px 0} .barrow span:first-child{width:92px;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .bar{height:13px;background:#2d86d8;border-radius:4px;min-width:2px} .barrow b{font-size:12px}
 .list{max-height:520px;overflow:auto} .school{display:block;width:100%;text-align:left;background:white;border:0;border-bottom:1px solid #eee;padding:10px;cursor:pointer} .school:hover{background:#eef5fb}
-.insights{display:grid;grid-template-columns:repeat(3,1fr);gap:10px} .insight{background:white;border:1px solid #e7edf2;border-radius:10px;padding:14px} .insight b{font-size:12px} .insight p{font-size:11px;color:#68798b;line-height:1.5}
-.badge{display:inline-block;padding:3px 7px;border-radius:12px;background:#edf4fa;font-size:10px;margin-right:4px}
-@media(max-width:1050px){aside{width:205px}main{margin-left:205px}.filters,.kpis{grid-template-columns:repeat(3,1fr)}.grid,.insights{grid-template-columns:1fr}.capacity-wrap{justify-content:flex-start}.prefeitura-logo{height:52px;filter:brightness(0) saturate(100%) invert(15%) sepia(35%) saturate(1850%) hue-rotate(174deg) brightness(91%) contrast(94%)}.sub{font-size:20px}}
+.insights{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.region-charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px}
+.region-chart{padding:2px 0 4px}
+.region-bar-row{display:grid;grid-template-columns:72px minmax(0,1fr) 58px;align-items:center;gap:10px;margin:15px 0}
+.region-bar-label{font-size:13px;font-weight:600;color:#24364b}
+.region-bar-track{height:18px;background:#edf2f6;border-radius:5px;overflow:hidden}
+.region-bar-fill{height:100%;background:#2d86d8;border-radius:5px;min-width:2px}
+.region-bar-value{font-size:13px;font-weight:700;text-align:right;color:#172b45}
+@media(max-width:1050px){.region-charts{grid-template-columns:1fr}}
+ .insight{background:white;border:1px solid #e7edf2;border-radius:10px;padding:14px} .insight b{font-size:14px} .insight p{font-size:13px;color:#68798b;line-height:1.55}
+.badge{display:inline-block;padding:4px 8px;border-radius:12px;background:#edf4fa;font-size:12px;margin-right:4px}
+@media(max-width:1050px){.school-summary-content{grid-template-columns:1fr}.school-summary-item{border-left:0;border-top:1px solid #edf1f4;padding:7px 0}.school-summary-item:first-child{border-top:0}.aside{width:205px}main{margin-left:205px}.filters,.kpis{grid-template-columns:repeat(3,1fr)}.grid,.insights{grid-template-columns:1fr}.capacity-wrap{justify-content:flex-start}.prefeitura-logo{height:52px;filter:brightness(0) saturate(100%) invert(15%) sepia(35%) saturate(1850%) hue-rotate(174deg) brightness(91%) contrast(94%)}.sub{font-size:20px}}
 
 /* Ajustes de apresentação por página */
 #school .school-detail-table th,
@@ -40,11 +49,14 @@ table{width:100%;border-collapse:collapse;font-size:10px} .table{overflow:auto} 
   text-align: center;
 }
 
+
+/* Página Vagas: alinhar a coluna Escola à esquerda, sobrescrevendo regras gerais de centralização */
+#vacancies table thead th:first-child, #vacancies #vacancyTable td:first-child { text-align: left !important; padding-left: 18px; }
 </style>
 
 <style>
 .source-badge{position:fixed;right:18px;bottom:14px;background:white;border:1px solid #dfe7ee;
-padding:7px 11px;border-radius:8px;font-size:10px;color:#68798b;box-shadow:0 3px 12px #102b4612;z-index:20}
+padding:7px 11px;border-radius:8px;font-size:11px;color:#68798b;box-shadow:0 3px 12px #102b4612;z-index:20}
 .source-badge a{color:#146bc1;text-decoration:none;font-weight:bold}
 </style>
 </head>
@@ -53,14 +65,13 @@ padding:7px 11px;border-radius:8px;font-size:10px;color:#68798b;box-shadow:0 3px
 <div class="brand"><div class="brand-title">REDE MUNICIPAL</div><span>Secretaria Municipal de Educação</span></div>
 <nav>
 <button data-page="overview" class="active"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></span>Visão Geral</button>
-<button data-page="school"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V5h14v16"/><path d="M8 8h2M14 8h2M8 12h2M14 12h2M8 16h2M14 16h2"/></svg></span>Por Escola</button>
-<button data-page="stage"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 19V9"/><path d="M10 19V5"/><path d="M16 19v-7"/><path d="M22 19V3"/></svg></span>Por Etapa</button>
-<button data-page="region"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></span>Por Região</button>
-<button data-page="period"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg></span>Por Período</button>
-<button data-page="vacancies"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5h16v14"/><path d="M8 9h8M8 13h5"/><path d="M15 17h5"/><path d="M17 14v6"/></svg></span>Vagas Disponíveis</button>
+<button data-page="school"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V5h14v16"/><path d="M8 8h2M14 8h2M8 12h2M14 12h2M8 16h2M14 16h2"/></svg></span>Escolas</button>
+<button data-page="stage"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 19V9"/><path d="M10 19V5"/><path d="M16 19v-7"/><path d="M22 19V3"/></svg></span>Etapas de Ensino</button>
+<button data-page="region"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></span>Regiões</button>
+<button data-page="period"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg></span>Períodos</button>
+<button data-page="vacancies"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5h16v14"/><path d="M8 9h8M8 13h5"/><path d="M15 17h5"/><path d="M17 14v6"/></svg></span>Vagas</button>
 
 <button data-page="contacts"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M7 8h10M7 12h7M7 16h5"/></svg></span>Rede Física</button>
-<button data-page="list"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg></span>Lista de Demanda</button>
 <button data-page="about"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10v6"/><path d="M12 7h.01"/></svg></span>Sobre</button>
 </nav>
 </aside>
@@ -99,31 +110,32 @@ padding:7px 11px;border-radius:8px;font-size:10px;color:#68798b;box-shadow:0 3px
 </section>
 
 <section class="page" id="school">
-<div class="head"><h2>Por Escola</h2><p class="muted">Selecione uma escola para visualizar seus indicadores e a distribuição da demanda.</p></div>
+<div class="head"><h2>Escolas</h2><p class="muted">Selecione uma escola para consultar os indicadores de matrícula, capacidade, turmas e vagas disponíveis da unidade.</p></div>
 <div class="card" style="margin-bottom:10px">
-  <label style="font-size:10px;font-weight:bold;display:block;margin-bottom:6px">ESCOLA</label>
+  <label style="font-size:12px;font-weight:bold;display:block;margin-bottom:6px">ESCOLA</label>
   <select id="schoolSelect" style="width:100%;padding:10px;border:1px solid #d7e0e8;border-radius:7px;background:white"></select>
 </div>
+<div class="school-summary-card"><h3 id="schoolSummaryTitle" class="visually-hidden">Selecione uma escola</h3><div id="schoolSummary" class="school-summary-content"></div></div>
 <div class="kpis" id="schoolKpis"></div>
 <div class="grid">
   <div class="card"><h3>Alunos por Etapa</h3><div id="schoolStages"></div></div>
+  <div class="card"><h3>Vagas Disponíveis por Etapa</h3><div id="schoolVacanciesByStage"></div></div>
   <div class="card"><h3>Alunos por Período</h3><div id="schoolPeriods"></div></div>
-  <div class="card"><h3>Resumo da Escola</h3><div id="schoolSummary"></div></div>
 </div>
 <div class="card table" style="margin-top:10px">
   <h3>Detalhamento das Classes</h3>
   <table><thead><tr><th>Etapa</th><th>Período</th><th>Turma</th><th>Nº Classe</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th></tr></thead>
   <tbody id="schoolDetailTable"></tbody></table>
 </div>
+<div class="card table" style="margin-top:10px">
+  <h3>Consulta de Demanda da Rede</h3>
+  <input id="schoolSearch" placeholder="Buscar escola, etapa, turma ou região..." style="padding:8px;width:min(100%,360px);border:1px solid #d7e0e8;border-radius:7px;margin-bottom:10px">
+  <table><thead><tr><th>Escola</th><th>Região</th><th>Período</th><th>Etapa</th><th>Turma</th><th>Classe</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th></tr></thead><tbody id="schoolListTable"></tbody></table>
+</div>
 </section>
 
 <section class="page" id="stage">
-<div class="head"><h2>Por Etapa</h2><p class="muted">Análise consolidada da demanda por etapa de ensino.</p></div>
-
-<div class="card" style="margin-bottom:10px">
-  <label style="font-size:10px;font-weight:bold;display:block;margin-bottom:6px">ETAPA</label>
-  <select id="stageSelect" style="width:100%;padding:10px;border:1px solid #d7e0e8;border-radius:7px;background:white"></select>
-</div>
+<div class="head"><h2>Etapas de Ensino</h2><p class="muted">Análise consolidada da demanda por etapa de ensino.</p></div>
 
 <div class="kpis" id="stageKpis"></div>
 
@@ -135,27 +147,32 @@ padding:7px 11px;border-radius:8px;font-size:10px;color:#68798b;box-shadow:0 3px
 
 <div class="card table" style="margin-top:10px">
   <h3>Distribuição por Escola</h3>
-  <table><thead><tr><th>Escola</th><th>Região</th><th>Manhã</th><th>Tarde</th><th>Classes</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th><th>Ocupação</th></tr></thead>
+  <table><thead><tr><th>Escola</th><th>Região</th><th>Manhã</th><th>Tarde</th><th>Integral</th><th>Classes</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th><th>Ocupação</th></tr></thead>
   <tbody id="stageSchoolTable"></tbody></table>
 </div>
 </section>
 
-<section class="page" id="region"><div class="head"><h2>Por Região</h2><p class="muted">Leitura territorial da demanda.</p></div>
+<section class="page" id="region"><div class="head"><h2>Regiões</h2><p class="muted">Leitura territorial da demanda.</p></div>
 <div class="insights" id="regionCards"></div>
+<div class="region-charts">
+  <div class="card"><h3>Alunos por Região</h3><div id="regionStudentsChart" class="region-chart"></div></div>
+  <div class="card"><h3>Classes por Região</h3><div id="regionClassesChart" class="region-chart"></div></div>
+</div>
 <div class="card table" style="margin-top:10px"><table><thead><tr><th>Região</th><th>Escolas</th><th>Classes</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th><th>Ocupação</th></tr></thead><tbody id="regionTable"></tbody></table></div></section>
 
-<section class="page" id="period"><div class="head"><h2>Por Período</h2><p class="muted">Comparação entre os períodos da rede.</p></div>
+<section class="page" id="period"><div class="head"><h2>Períodos</h2><p class="muted">Comparação entre os períodos da rede.</p></div>
 <div class="card table"><table><thead><tr><th>Período</th><th>Escolas</th><th>Classes</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th><th>Ocupação</th></tr></thead><tbody id="periodTable"></tbody></table></div></section>
 
-<section class="page" id="list"><div class="head"><h2>Lista de Demanda</h2><p class="muted">Consulta por Escola.</p></div>
-<div class="card table"><input id="search" placeholder="Buscar escola, etapa, turma ou região..." style="padding:8px;width:290px;border:1px solid #d7e0e8;border-radius:7px;margin-bottom:10px">
-<table><thead><tr><th>Escola</th><th>Região</th><th>Período</th><th>Etapa</th><th>Turma</th><th>Classe</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th></tr></thead><tbody id="listTable"></tbody></table></div></section>
+
 
 <section class="page" id="vacancies">
-<div class="head"><h2>Vagas Disponíveis</h2><p class="muted">Consulta das vagas disponíveis na rede a partir da capacidade e do número de alunos.</p></div>
-<div class="kpis" id="vacancyKpis"></div>
+<div class="head"><h2>Vagas</h2><p class="muted">Consulta das vagas disponíveis registradas na base de dados, conforme o mapa individual.</p></div>
+<div class="kpis vacancy-kpis" id="vacancyKpis"></div>
+<div class="grid vacancy-charts" style="grid-template-columns:1fr 1fr;margin-bottom:10px">
+  <div class="card"><h3>Vagas por Etapa</h3><div id="vacancyByStage"></div></div>
+  <div class="card"><h3>Vagas por Região</h3><div id="vacancyByRegion"></div></div>
+</div>
 <div class="card table" style="margin-top:10px">
-<h3>Distribuição de Vagas</h3>
 <table><thead><tr><th>Escola</th><th>Região</th><th>Etapa</th><th>Período</th><th>Turma</th><th>Nº Classe</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th></tr></thead><tbody id="vacancyTable"></tbody></table></div>
 </section>
 
@@ -374,17 +391,24 @@ function isRealClass(d){
  const etapa=String(d['Etapa']??'').trim().toLowerCase();
  return etapa!=='sala disp.';
 }
+// Usa o valor oficial de vagas já calculado na base, conforme o mapa individual.
+// Não recalcula vagas pela diferença entre capacidade e alunos.
+function vagasTurma(d){
+ if(!isRealClass(d)) return 0;
+ return Math.max(0, num(d['Vagas Disp.']));
+}
 function metrics(a){
  let al=a.reduce((s,d)=>s+num(d.Alunos),0),cap=a.reduce((s,d)=>s+num(d.Capacidade),0);
  let cl=a.filter(isRealClass).length;
- return {al,cap,cl,es:new Set(a.map(d=>d.Escola)).size,sa:cap-al,oc:cap?al/cap*100:0};
+ let sa=a.reduce((s,d)=>s+vagasTurma(d),0);
+ return {al,cap,cl,es:new Set(a.map(d=>d.Escola)).size,sa,oc:cap?al/cap*100:0};
 }
 function group(a,k){
  const g={};
  a.forEach(d=>{
    const x=(k==='Etapa'?normalizeEtapa(d[k]):k==='Período'?normalizePeriodo(d[k]):(d[k]||'Não informado'));
-   g[x]??={al:0,cap:0,cl:0,es:new Set()};
-   g[x].al+=num(d.Alunos);g[x].cap+=num(d.Capacidade);
+   g[x]??={al:0,cap:0,vagas:0,cl:0,es:new Set()};
+   g[x].al+=num(d.Alunos);g[x].cap+=num(d.Capacidade);g[x].vagas+=vagasTurma(d);
    if(isRealClass(d)) g[x].cl+=1;
    g[x].es.add(d.Escola);
  });
@@ -395,14 +419,14 @@ function summary(g, order){
    ? (a,b)=>a.localeCompare(b,'pt-BR')
    : (a,b)=>g[b].al-g[a].al);
  return keys.map(k=>{
-   let q=g[k],s=q.cap-q.al,o=q.cap?q.al/q.cap*100:0;
-   return `<tr><td>${esc(k)}</td><td class="num">${n(q.es.size)}</td><td class="num">${n(q.cl)}</td><td class="num">${n(q.al)}</td><td class="num">${n(q.cap)}</td><td class="num">${s<0?'−':''}${n(Math.abs(s))}</td><td class="num">${o.toFixed(1).replace('.',',')}%</td></tr>`;
+   let q=g[k],o=q.cap?q.al/q.cap*100:0;
+   return `<tr><td>${esc(k)}</td><td class="num">${n(q.es.size)}</td><td class="num">${n(q.cl)}</td><td class="num">${n(q.al)}</td><td class="num">${n(q.cap)}</td><td class="num">${n(q.vagas)}</td><td class="num">${o.toFixed(1).replace('.',',')}%</td></tr>`;
  }).join('');
 }
 function overview(){
  const a=filtered(),m=metrics(a);
  $('kpis').innerHTML=[
-  ['👥','Nº de Alunos',n(m.al)],['🏫','Nº de Escolas',n(m.es)],['📚','Nº de Classes',n(m.cl)],['↕','Vagas Disponíveis',n(m.sa)],['%','Ocupação',m.oc.toFixed(1).replace('.',',')+'%']
+  ['👥','Nº de Alunos',n(m.al)],['📚','Nº de Classes',n(m.cl)],['🏫','Capacidade Total',n(m.cap)],['↕','Vagas Disponíveis',n(m.sa)],['%','Ocupação',m.oc.toFixed(1).replace('.',',')+'%']
  ].map(x=>`<div class="kpi"><small>${x[0]} ${x[1]}</small><strong>${x[2]}</strong></div>`).join('');
  const sg=group(a,'Etapa'),mx=Math.max(...Object.values(sg).map(x=>x.al),1);
  const ordemEtapas=['Fase 1','Fase 2','1º Ano','2º Ano','3º Ano','4º Ano','5º Ano'];
@@ -424,8 +448,8 @@ function overview(){
    const registros=a.filter(d=>String(d.Escola)===String(k));
    const regioes=[...new Set(registros.map(d=>String(d['Região']||'').trim()).filter(Boolean))];
    const regiao=regioes.length ? regioes.join(', ') : 'Não informado';
-   const saldo=q.cap-q.al, ocup=q.cap?q.al/q.cap*100:0;
-   return `<tr><td>${esc(k)}</td><td>${esc(regiao)}</td><td class="num">${n(q.al)}</td><td class="num">${n(q.cl)}</td><td class="num">${n(q.cap)}</td><td class="num">${saldo<0?'−':''}${n(Math.abs(saldo))}</td><td class="num">${ocup.toFixed(1).replace('.',',')}%</td></tr>`;
+   const saldo=registros.reduce((s,d)=>s+vagasTurma(d),0), ocup=q.cap?q.al/q.cap*100:0;
+   return `<tr><td>${esc(k)}</td><td>${esc(regiao)}</td><td class="num">${n(q.al)}</td><td class="num">${n(q.cl)}</td><td class="num">${n(q.cap)}</td><td class="num">${n(saldo)}</td><td class="num">${ocup.toFixed(1).replace('.',',')}%</td></tr>`;
  }).join('');
 }
 function school(){
@@ -436,72 +460,54 @@ function school(){
    sel.dataset.ready='1';
    sel.onchange=()=>renderSchoolDetail();
  }
- if(!sel.value && allSchools.length) sel.value=allSchools[0];
  renderSchoolDetail();
 }
-
 function renderSchoolDetail(){
  const selected=$('schoolSelect').value;
- if(!selected) return;
+ const zeroKpis=[['👥','Nº de Alunos','0'],['📚','Nº de Classes','0'],['🏫','Capacidade Total','0'],['↕','Vagas Disponíveis','0'],['%','Ocupação','0,0%']];
+ if(!selected){
+   $('schoolKpis').innerHTML=zeroKpis.map(x=>`<div class="kpi"><small>${x[0]} ${x[1]}</small><strong>${x[2]}</strong></div>`).join('');
+   const msg='<div class="empty-state" style="padding:12px 10px;text-align:center;color:#718096">Selecione uma escola para visualizar os dados.</div>';
+   $('schoolSummaryTitle').textContent='Selecione uma escola';
+   ['schoolStages','schoolVacanciesByStage','schoolPeriods','schoolSummary'].forEach(id=>$(id).innerHTML=msg);
+   $('schoolDetailTable').innerHTML=`<tr><td colspan="7" style="text-align:center;padding:20px;color:#718096">Selecione uma escola para consultar as classes.</td></tr>`;
+   $('schoolListTable').innerHTML=`<tr><td colspan="9" style="text-align:center;padding:20px;color:#718096">Selecione uma escola para consultar a demanda.</td></tr>`;
+   return;
+ }
  const a=filtered().filter(d=>String(d.Escola)===String(selected));
+ $('schoolSummaryTitle').textContent=selected;
  const m=metrics(a);
-
+ // Na página Escolas, a capacidade ajustada considera os alunos matriculados
+ // mais as vagas oficiais já calculadas na coluna Vagas Disp.
+ const capacidadeAjustada=m.al+m.sa;
+ const ocupacaoAjustada=capacidadeAjustada ? m.al/capacidadeAjustada*100 : 0;
  $('schoolKpis').innerHTML=[
-   ['👥','Nº de Alunos',n(m.al)],
-   ['📚','Nº de Classes',n(m.cl)],
-   ['🏫','Capacidade',n(m.cap)],
-   ['↕','Vagas Disponíveis',n(m.sa)],
-   ['%','Ocupação',m.oc.toFixed(1).replace('.',',')+'%']
+   ['👥','Nº de Alunos',n(m.al)],['📚','Nº de Classes',n(m.cl)],['🏫','Capacidade Total',n(capacidadeAjustada)],['↕','Vagas Disponíveis',n(m.sa)],['%','Ocupação',ocupacaoAjustada.toFixed(1).replace('.',',')+'%']
  ].map(x=>`<div class="kpi"><small>${x[0]} ${x[1]}</small><strong>${x[2]}</strong></div>`).join('');
-
  const sg=group(a,'Etapa'), mx=Math.max(...Object.values(sg).map(x=>x.al),1);
  const ordemEtapas=['Fase 1','Fase 2','1º Ano','2º Ano','3º Ano','4º Ano','5º Ano'];
- $('schoolStages').innerHTML=ordemEtapas.filter(k=>sg[k]).map(k=>{
-   const v=sg[k];
-   return `<div class="barrow"><span title="${esc(k)}">${esc(k)}</span><div class="bar" style="width:${Math.max(v.al/mx*100,1)}%"></div><b>${n(v.al)}</b></div>`;
- }).join('');
-
+ $('schoolStages').innerHTML=ordemEtapas.filter(k=>sg[k]).map(k=>{const v=sg[k];return `<div class="barrow"><span title="${esc(k)}">${esc(k)}</span><div class="bar" style="width:${Math.max(v.al/mx*100,1)}%"></div><b>${n(v.al)}</b></div>`;}).join('')||'<div class="muted">Não há dados para esta escola com os filtros selecionados.</div>';
+ const vMax=Math.max(...Object.values(sg).map(x=>x.vagas),1);
+ const etapasComVagas=ordemEtapas.filter(k=>sg[k]).concat(Object.keys(sg).filter(k=>!ordemEtapas.includes(k)).sort((x,y)=>x.localeCompare(y,'pt-BR')));
+ $('schoolVacanciesByStage').innerHTML=etapasComVagas.map(k=>{const v=sg[k];return `<div class="barrow"><span title="${esc(k)}">${esc(k)}</span><div class="bar" style="width:${Math.max(v.vagas/vMax*100,1)}%"></div><b>${n(v.vagas)}</b></div>`;}).join('')||'<div class="muted">Não há vagas registradas para esta escola com os filtros selecionados.</div>';
  const pg=group(a,'Período'), pmx=Math.max(...Object.values(pg).map(x=>x.al),1);
- $('schoolPeriods').innerHTML=Object.entries(pg).sort((x,y)=>y[1].al-x[1].al).map(([k,v])=>
-   `<div class="barrow"><span title="${esc(k)}">${esc(k)}</span><div class="bar" style="width:${Math.max(v.al/pmx*100,1)}%"></div><b>${n(v.al)}</b></div>`
- ).join('');
-
+ $('schoolPeriods').innerHTML=Object.entries(pg).sort((x,y)=>y[1].al-x[1].al).map(([k,v])=>`<div class="barrow"><span title="${esc(k)}">${esc(k)}</span><div class="bar" style="width:${Math.max(v.al/pmx*100,1)}%"></div><b>${n(v.al)}</b></div>`).join('')||'<div class="muted">Não há dados para esta escola com os filtros selecionados.</div>';
  const regioes=[...new Set(a.map(d=>String(d['Região']||'').trim()).filter(Boolean))];
- const regiao=regioes.length?regioes.join(', '):'Não informado';
- $('schoolSummary').innerHTML=`
-   <div style="padding:5px 0 12px">
-     <div class="muted">Região</div><div style="font-size:17px;font-weight:bold;margin-top:3px">${esc(regiao)}</div>
-   </div>
-   <div style="padding:8px 0;border-top:1px solid #edf1f4"><div class="muted">Períodos</div><div style="margin-top:5px">${Object.keys(pg).map(k=>`<span class="badge">${esc(k)}</span>`).join('')}</div></div>
-   <div style="padding:8px 0;border-top:1px solid #edf1f4"><div class="muted">Etapas</div><div style="margin-top:5px">${ordemEtapas.filter(k=>sg[k]).map(k=>`<span class="badge">${esc(k)}</span>`).join('')}</div></div>
- `;
-
- $('schoolDetailTable').innerHTML=a.map(d=>{
-   const saldo=num(d.Capacidade)-num(d.Alunos);
-   return `<tr>
-     <td>${esc(normalizeEtapa(d.Etapa))}</td><td>${esc(normalizePeriodo(d['Período']))}</td><td>${esc(d.Turma)}</td>
-     <td>${esc(d['Nº Classe'])}</td><td class="num">${n(d.Alunos)}</td>
-     <td class="num">${n(d.Capacidade)}</td><td class="num">${saldo<0?'−':''}${n(Math.abs(saldo))}</td>
-   </tr>`;
- }).join('');
+ const regiao=regioes.length?regioes.map(r=>nomesRegiao[String(r)]||r).join(', '):'Não informado';
+ $('schoolSummary').innerHTML=`<div class="school-summary-item"><div class="muted">Região</div><div style="font-size:15px;font-weight:bold;margin-top:2px">${esc(regiao)}</div></div><div class="school-summary-item"><div class="muted">Períodos</div><div style="margin-top:3px">${Object.keys(pg).map(k=>`<span class="badge">${esc(k)}</span>`).join('')||'—'}</div></div><div class="school-summary-item"><div class="muted">Etapas</div><div style="margin-top:3px">${ordemEtapas.filter(k=>sg[k]).map(k=>`<span class="badge">${esc(k)}</span>`).join('')||'—'}</div></div>`;
+ const classes=a.filter(isRealClass);
+ $('schoolDetailTable').innerHTML=classes.map(d=>`<tr><td>${esc(normalizeEtapa(d.Etapa))}</td><td>${esc(normalizePeriodo(d['Período']))}</td><td>${esc(d.Turma)}</td><td>${esc(d['Nº Classe'])}</td><td class="num">${n(d.Alunos)}</td><td class="num">${n(d.Capacidade)}</td><td class="num">${n(vagasTurma(d))}</td></tr>`).join('')||'<tr><td colspan="7" style="text-align:center;padding:20px;color:#718096">Nenhuma classe encontrada com os filtros selecionados.</td></tr>';
+ const q=($('schoolSearch').value||'').toLowerCase();
+ const lista=classes.filter(d=>!q||[d.Escola,d.Etapa,d.Turma,d['Período'],d.Região,d['Nº Classe']].some(x=>String(x||'').toLowerCase().includes(q)));
+ $('schoolListTable').innerHTML=lista.slice(0,1000).map(d=>`<tr><td>${esc(d.Escola)}</td><td>${esc(nomesRegiao[String(d.Região)]||d.Região)}</td><td>${esc(normalizePeriodo(d['Período']))}</td><td>${esc(normalizeEtapa(d.Etapa))}</td><td>${esc(d.Turma)}</td><td>${esc(d['Nº Classe'])}</td><td class="num">${n(d.Alunos)}</td><td class="num">${n(d.Capacidade)}</td><td class="num">${n(vagasTurma(d))}</td></tr>`).join('')||'<tr><td colspan="9" style="text-align:center;padding:20px;color:#718096">Nenhuma demanda encontrada com os filtros selecionados.</td></tr>';
 }
-
 function stage(){
- const stages=['Fase 1','Fase 2','1º Ano','2º Ano','3º Ano','4º Ano','5º Ano'];
- const sel=$('stageSelect');
- if(!sel.dataset.ready){
-   sel.innerHTML='<option value="">Selecione uma etapa...</option>'+stages.map(s=>`<option value="${esc(s)}">${esc(s)}</option>`).join('');
-   sel.dataset.ready='1';
-   sel.onchange=()=>renderStageDetail();
- }
- if(!sel.value) sel.value=stages.find(s=>filtered().some(d=>normalizeEtapa(d.Etapa)===s)) || stages[0];
  renderStageDetail();
 }
 
 function renderStageDetail(){
- const selected=$('stageSelect').value;
- if(!selected) return;
- const a=filtered().filter(d=>normalizeEtapa(d.Etapa)===String(selected));
+ // Usa exclusivamente os filtros globais do topo, sem um segundo filtro de etapa.
+ const a=filtered();
  const m=metrics(a);
 
  $('stageKpis').innerHTML=[
@@ -535,53 +541,85 @@ function renderStageDetail(){
  const bySchool={};
  a.forEach(d=>{
    const e=d.Escola||'Não informado';
-   bySchool[e]??={reg:new Set(),manha:0,tarde:0,cl:0,al:0,cap:0};
+   bySchool[e]??={reg:new Set(),manha:0,tarde:0,integral:0,cl:0,al:0,cap:0,vagas:0};
    const q=bySchool[e];
    if(d['Região']) q.reg.add(String(d['Região']).trim());
    if(isRealClass(d)) q.cl+=1;
-   q.al+=num(d.Alunos); q.cap+=num(d.Capacidade);
-   if(String(d['Período']).toLowerCase()==='manhã') q.manha+=num(d.Alunos);
-   if(String(d['Período']).toLowerCase()==='tarde') q.tarde+=num(d.Alunos);
+   q.al+=num(d.Alunos); q.cap+=num(d.Capacidade); q.vagas+=vagasTurma(d);
+   const periodo=normalizePeriodo(d['Período']);
+   if(periodo==='Manhã') q.manha+=num(d.Alunos);
+   else if(periodo==='Tarde') q.tarde+=num(d.Alunos);
+   else if(periodo==='Integral') q.integral+=num(d.Alunos);
  });
  $('stageSchoolTable').innerHTML=Object.keys(bySchool).sort((a,b)=>a.localeCompare(b,'pt-BR')).map(e=>{
-   const q=bySchool[e], saldo=q.cap-q.al, ocup=q.cap?q.al/q.cap*100:0;
+   const q=bySchool[e], saldo=q.vagas, ocup=q.cap?q.al/q.cap*100:0;
    const reg=[...q.reg].map(r=>nomesRegiao[String(r)]||r).join(', ');
-   return `<tr><td>${esc(e)}</td><td>${esc(reg)}</td><td class="num">${n(q.manha)}</td><td class="num">${n(q.tarde)}</td><td class="num">${n(q.cl)}</td><td class="num">${n(q.al)}</td><td class="num">${n(q.cap)}</td><td class="num">${saldo<0?'−':''}${n(Math.abs(saldo))}</td><td class="num">${ocup.toFixed(1).replace('.',',')}%</td></tr>`;
+   return `<tr><td>${esc(e)}</td><td>${esc(reg)}</td><td class="num">${n(q.manha)}</td><td class="num">${n(q.tarde)}</td><td class="num">${n(q.integral)}</td><td class="num">${n(q.cl)}</td><td class="num">${n(q.al)}</td><td class="num">${n(q.cap)}</td><td class="num">${n(saldo)}</td><td class="num">${ocup.toFixed(1).replace('.',',')}%</td></tr>`;
  }).join('');
 }
 
 function region(){
- let g=group(filtered(),'Região');
- $('regionTable').innerHTML=summary(g);
- const nomesRegiao={'1':'Norte','2':'Sul','3':'Leste','4':'Oeste','5':'Centro','Norte':'Norte','Sul':'Sul','Leste':'Leste','Oeste':'Oeste','Centro':'Centro'};
- $('regionCards').innerHTML=Object.keys(g).sort((a,b)=>String(a).localeCompare(String(b),'pt-BR')).map(k=>{
-   const nome=nomesRegiao[String(k)] || String(k);
-   return `<div class="insight"><b>${esc(nome)}</b><p>${n(g[k].al)} alunos em ${n(g[k].es.size)} escolas, ${n(g[k].cl)} classes.</p></div>`;
- }).join('');
+  let g=group(filtered(),'Região');
+  $('regionTable').innerHTML=summary(g);
+  const nomesRegiao={'1':'Norte','2':'Sul','3':'Leste','4':'Oeste','5':'Centro','Norte':'Norte','Sul':'Sul','Leste':'Leste','Oeste':'Oeste','Centro':'Centro'};
+  const dados=Object.keys(g).map(k=>({
+    chave:k,
+    nome:nomesRegiao[String(k)] || String(k),
+    alunos:g[k].al,
+    classes:g[k].cl,
+    escolas:g[k].es.size
+  })).sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR'));
+  $('regionCards').innerHTML=dados.map(v=>{
+    return `<div class="insight"><b>${esc(v.nome)}</b><p>${n(v.alunos)} alunos em ${n(v.escolas)} escolas, ${n(v.classes)} classes.</p></div>`;
+  }).join('');
+  function desenharBarras(elementId, campo){
+    const max=Math.max(...dados.map(v=>Number(v[campo])||0),1);
+    $(elementId).innerHTML=dados.slice()
+      .sort((a,b)=>(Number(b[campo])||0)-(Number(a[campo])||0))
+      .map(v=>{
+        const valor=Number(v[campo])||0;
+        const largura=Math.max(valor/max*100, valor>0?1:0);
+        return `<div class="region-bar-row">
+          <span class="region-bar-label">${esc(v.nome)}</span>
+          <div class="region-bar-track"><div class="region-bar-fill" style="width:${largura}%"></div></div>
+          <span class="region-bar-value">${n(valor)}</span>
+        </div>`;
+      }).join('');
+  }
+  desenharBarras('regionStudentsChart','alunos');
+  desenharBarras('regionClassesChart','classes');
 }
 function period(){ $('periodTable').innerHTML=summary(group(filtered(),'Período')); }
-function list(){
- let q=($('search').value||'').toLowerCase();
- let a=filtered().filter(d=>!q||[d.Escola,d.Etapa,d.Turma,d['Período'],d.Região].some(x=>String(x||'').toLowerCase().includes(q)));
- $('listTable').innerHTML=a.slice(0,1000).map(d=>{let s=num(d.Capacidade)-num(d.Alunos);return `<tr><td>${esc(d.Escola)}</td><td>${esc(d.Região)}</td><td>${esc(d['Período'])}</td><td>${esc(d.Etapa)}</td><td>${esc(d.Turma)}</td><td>${esc(d['Nº Classe'])}</td><td>${n(d.Alunos)}</td><td>${n(d.Capacidade)}</td><td>${s<0?'−':''}${n(Math.abs(s))}</td></tr>`}).join('');
-}
+
 function dataPage(){
  const a=filtered(),fs=['Ano','Cod CIE','Escola','Região','Período','Tipo de Ensino','Etapa','Turma','Nº Classe','Alunos','Educação Especial','Transporte','Retidos','Capacidade'];
  $('dataTable').innerHTML=fs.map(f=>{let p=a.filter(d=>d[f]!=null&&d[f]!=='').length;return `<tr><td>${f}</td><td>${n(p)}</td><td>${n(a.length-p)}</td></tr>`}).join('');
 }
 function vacancies(){
- const a=filtered().map(d=>({...d,_v:num(d.Capacidade)-num(d.Alunos)})).filter(d=>d._v>0).sort((x,y)=>y._v-x._v);
- const schools=new Set(a.map(d=>d.Escola)).size;
- const classes=a.filter(isRealClass).length;
+ const base=filtered().map(d=>({...d,_v:vagasTurma(d)}));
+ const a=base.filter(d=>d._v>0).sort((x,y)=>y._v-x._v);
  const total=a.reduce((sum,d)=>sum+d._v,0);
- $('vacancyKpis').innerHTML=[['↕','Vagas Disponíveis',n(total)],['🏫','Escolas com Vagas',n(schools)],['📚','Classes com Vagas',n(classes)],['%','Ocupação',metrics(filtered()).oc.toFixed(1).replace('.',',')+'%']].map(x=>`<div class="kpi"><small>${x[0]} ${x[1]}</small><strong>${x[2]}</strong></div>`).join('');
+ $('vacancyKpis').innerHTML=[['↕','Vagas Disponíveis',n(total)],['%','Ocupação',metrics(base).oc.toFixed(1).replace('.',',')+'%']].map(x=>`<div class="kpi"><small>${x[0]} ${x[1]}</small><strong>${x[2]}</strong></div>`).join('');
+ const ordemEtapas=['Fase 1','Fase 2','1º Ano','2º Ano','3º Ano','4º Ano','5º Ano'];
+ // Inicializa todas as etapas para que continuem visíveis mesmo quando o total for zero.
+ const etapaTotals=Object.fromEntries(ordemEtapas.map(e=>[e,0]));
+ base.forEach(d=>{const e=normalizeEtapa(d.Etapa);if(Object.prototype.hasOwnProperty.call(etapaTotals,e)) etapaTotals[e]+=d._v;});
+ const regionTotals={};
+ a.forEach(d=>{const raw=String(d.Região||'Não informada');const r=nomesRegiao[raw]||raw;regionTotals[r]=(regionTotals[r]||0)+d._v;});
+ const draw=(id,totals,orderedLabels=null)=>{
+   const entries=orderedLabels ? orderedLabels.map(label=>[label,totals[label]||0]) : Object.entries(totals).sort((x,y)=>y[1]-x[1]);
+   const max=Math.max(...entries.map(x=>x[1]),1);
+   $(id).innerHTML=entries.length?entries.map(([label,value])=>`<div class="region-bar-row"><span class="region-bar-label">${esc(label)}</span><div class="region-bar-track"><div class="region-bar-fill" style="width:${Math.max(value/max*100,value>0?1:0)}%"></div></div><span class="region-bar-value">${n(value)}</span></div>`).join(''):'<p class="muted">Nenhuma vaga disponível para os filtros selecionados.</p>';
+ };
+ draw('vacancyByStage',etapaTotals,ordemEtapas);
+ draw('vacancyByRegion',regionTotals);
  $('vacancyTable').innerHTML=a.slice(0,1000).map(d=>`<tr><td>${esc(d.Escola)}</td><td>${esc(nomesRegiao[String(d.Região)]||d.Região)}</td><td>${esc(normalizeEtapa(d.Etapa))}</td><td>${esc(normalizePeriodo(d['Período']))}</td><td>${esc(d.Turma)}</td><td>${esc(d['Nº Classe'])}</td><td class="num">${n(d.Alunos)}</td><td class="num">${n(d.Capacidade)}</td><td class="num">${n(d._v)}</td></tr>`).join('');
 }
-function render(p){if(p==='overview')overview();if(p==='school')school();if(p==='stage')stage();if(p==='region')region();if(p==='period')period();if(p==='list')list();if(p==='vacancies')vacancies();if(p==='data')dataPage();}
+function render(p){if(p==='overview')overview();if(p==='school')school();if(p==='stage')stage();if(p==='region')region();if(p==='period')period();if(p==='vacancies')vacancies();if(p==='data')dataPage();}
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$(b.dataset.page).classList.add('active');
- document.getElementById('global-filters').style.display = (b.dataset.page === 'contacts' || b.dataset.page === 'school') ? 'none' : '';
+ document.getElementById('global-filters').style.display = (b.dataset.page === 'contacts') ? 'none' : '';
  render(b.dataset.page);
 });
 Object.keys(fields).forEach(id=>$(id).onchange=()=>{
@@ -592,7 +630,7 @@ Object.keys(fields).forEach(id=>$(id).onchange=()=>{
  else render(page);
 });
 $('clear').onclick=()=>{Object.keys(fields).forEach(id=>$(id).value='');fillFilterOptions();render(document.querySelector('.page.active').id)};
-$('search').oninput=list;
+$('schoolSearch').oninput=()=>{if(document.querySelector('.page.active').id==='school')renderSchoolDetail();};
 async function initDashboard(){
   try {
     const liveData = await loadGoogleSheetData();
