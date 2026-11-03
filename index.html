@@ -52,6 +52,58 @@ table{width:100%;border-collapse:collapse;font-size:13px} .table{overflow:auto} 
 
 /* Página Vagas: alinhar a coluna Escola à esquerda, sobrescrevendo regras gerais de centralização */
 #vacancies table thead th:first-child, #vacancies #vacancyTable td:first-child { text-align: left !important; padding-left: 18px; }
+
+/* Página Períodos: indicadores e gráficos comparativos */
+.period-kpis{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:10px}
+.period-main-charts{margin:0 0 10px}
+.period-main-charts .card{min-width:0}
+.period-stage-card{margin-bottom:0}
+.period-donut-layout{display:flex;align-items:center;justify-content:center;gap:28px;min-height:220px;flex-wrap:wrap}
+.period-donut{width:168px;height:168px;border-radius:50%;position:relative;flex:0 0 168px;display:flex;align-items:center;justify-content:center}
+.period-donut:after{content:"";position:absolute;width:104px;height:104px;background:#fff;border-radius:50%;box-shadow:0 0 0 1px #edf1f4}
+.period-donut-center{z-index:1;text-align:center;font-size:23px;font-weight:700;color:#14243a}
+.period-donut-center small{display:block;font-size:10px;color:#68798b;font-weight:400;margin-top:3px}
+.period-donut-legend{min-width:130px}
+.period-donut-legend-row{display:grid;grid-template-columns:11px 1fr auto;gap:8px;align-items:center;margin:14px 0;font-size:12px}
+.period-donut-dot{width:11px;height:11px;border-radius:3px}
+.period-donut-legend-row b{font-size:12px}
+.period-legend{display:flex;gap:16px;flex-wrap:wrap;margin:-2px 0 12px;color:#526579;font-size:11px}
+.period-legend span{display:inline-flex;align-items:center;gap:5px}
+.period-dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+.period-dot.morning{background:#2d86d8}.period-dot.afternoon{background:#55a6e8}.period-dot.fulltime{background:#55c98b}
+.period-stage-row{display:grid;grid-template-columns:82px minmax(120px,1fr) 62px;gap:10px;align-items:center;margin:12px 0}
+.period-stage-label{font-size:12px;white-space:nowrap;font-weight:600}
+.period-stage-track{display:flex;height:18px;background:#edf2f6;border-radius:4px;overflow:hidden}
+.period-stage-segment{height:100%;min-width:0;transition:width .2s ease}
+.period-stage-segment.morning{background:#2d86d8}.period-stage-segment.afternoon{background:#55a6e8}.period-stage-segment.fulltime{background:#55c98b}
+.period-stage-total{text-align:right;font-size:12px;font-weight:700}
+.period-table-card{margin-top:0}
+@media(max-width:1050px){.period-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.period-stage-row{grid-template-columns:72px minmax(100px,1fr) 52px}.period-donut-layout{gap:14px}.period-donut{width:145px;height:145px;flex-basis:145px}}
+
+/* Interatividade e animações sutis dos filtros */
+.filters{perspective:900px;align-items:stretch}
+.filter{position:relative;min-width:0;transform:translateY(0);transition:transform .24s ease,box-shadow .24s ease,border-color .24s ease;background:linear-gradient(145deg,#fff 0%,#fbfdff 100%);animation:filterEnter .55s cubic-bezier(.2,.75,.25,1) both}
+.filter:nth-child(2){animation-delay:.06s}.filter:nth-child(3){animation-delay:.12s}.filter:nth-child(4){animation-delay:.18s}.filter:nth-child(5){animation-delay:.24s}
+.filter:hover,.filter:focus-within{transform:translateY(-3px);border-color:#86bdf0;box-shadow:0 9px 24px #146bc122}
+.filter label{display:flex;align-items:center;gap:6px;color:#263e56;letter-spacing:.1px}
+.filter-help{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:#e8f3ff;color:#146bc1;font-size:9px;font-weight:800;transition:background .2s,color .2s;cursor:help}
+.filter:hover .filter-help,.filter:focus-within .filter-help{background:#146bc1;color:white}
+.filter select,.filter input{outline:none;transition:border-color .2s,box-shadow .2s,background .2s;cursor:pointer}
+.filter select:hover{border-color:#9abfe2;background:#fbfdff}
+.filter select:focus,.filter input:focus{border-color:#2185e6;box-shadow:0 0 0 3px #2185e61c}
+.filter-hint{position:absolute;z-index:20;left:8px;right:8px;top:calc(100% + 7px);padding:8px 10px;border-radius:7px;background:#102b46;color:white;font-size:11px;line-height:1.4;box-shadow:0 7px 20px #102b4630;opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .18s ease,transform .18s ease,visibility .18s;pointer-events:none}
+.filter-hint:before{content:"";position:absolute;top:-5px;left:15px;width:10px;height:10px;background:#102b46;transform:rotate(45deg)}
+.filter:hover .filter-hint,.filter:focus-within .filter-hint{opacity:1;visibility:visible;transform:translateY(0)}
+.clear{display:flex;align-items:center;justify-content:center;gap:6px;padding:9px 10px;transition:transform .2s ease,background .2s ease,color .2s ease,box-shadow .2s ease;animation:filterEnter .55s .3s both}
+.clear:hover{background:#146bc1;color:white;transform:translateY(-2px);box-shadow:0 7px 18px #146bc126}
+.clear:active{transform:translateY(0) scale(.97)}
+@keyframes filterEnter{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+.page.active .head,.page.active .kpi,.page.active .card,.page.active .insight{animation:contentEnter .42s ease both}
+.page.active .kpi:nth-child(2){animation-delay:.04s}.page.active .kpi:nth-child(3){animation-delay:.08s}.page.active .kpi:nth-child(4){animation-delay:.12s}.page.active .kpi:nth-child(5){animation-delay:.16s}
+@keyframes contentEnter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.filter,.filter-hint,.filter-help,.filter select,.clear,.page.active .head,.page.active .kpi,.page.active .card,.page.active .insight{animation:none!important;transition:none!important}}
+@media(max-width:1050px){.filter-hint{display:none}}
+
 </style>
 
 <style>
@@ -59,6 +111,16 @@ table{width:100%;border-collapse:collapse;font-size:13px} .table{overflow:auto} 
 padding:7px 11px;border-radius:8px;font-size:11px;color:#68798b;box-shadow:0 3px 12px #102b4612;z-index:20}
 .source-badge a{color:#146bc1;text-decoration:none;font-weight:bold}
 </style>
+
+<style>
+.fulltime-kpis{grid-template-columns:repeat(5,minmax(0,1fr));margin-bottom:10px}
+.fulltime-charts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fulltime-charts .card{min-width:0}
+.fulltime-charts .region-chart{min-height:180px}
+.fulltime-table-empty{text-align:center;color:#718198;padding:18px}
+@media(max-width:1050px){.fulltime-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.fulltime-charts{grid-template-columns:1fr}}
+</style>
+
 </head>
 <body>
 <aside>
@@ -69,6 +131,7 @@ padding:7px 11px;border-radius:8px;font-size:11px;color:#68798b;box-shadow:0 3px
 <button data-page="stage"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 19V9"/><path d="M10 19V5"/><path d="M16 19v-7"/><path d="M22 19V3"/></svg></span>Etapas de Ensino</button>
 <button data-page="region"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-12A7 7 0 0 0 5 9c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></span>Regiões</button>
 <button data-page="period"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v5l3 2"/></svg></span>Períodos</button>
+<button data-page="fulltime"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/><path d="M7 3 5 5M17 3l2 2"/></svg></span>Tempo Integral</button>
 <button data-page="vacancies"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 19V5h16v14"/><path d="M8 9h8M8 13h5"/><path d="M15 17h5"/><path d="M17 14v6"/></svg></span>Vagas</button>
 
 <button data-page="contacts"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M7 8h10M7 12h7M7 16h5"/></svg></span>Rede Física</button>
@@ -87,13 +150,13 @@ padding:7px 11px;border-radius:8px;font-size:11px;color:#68798b;box-shadow:0 3px
   <div class="muted header-status"><div></div><b id="base"></b><div class="update-date">Última atualização: <b id="lastUpdate">17/09/2026</b></div></div>
 </div>
 
-<div class="filters" id="global-filters">
-<div class="filter"><label>Região</label><select id="freg"><option value="">Todas</option></select></div>
-<div class="filter"><label>Escola</label><select id="fesc"><option value="">Todas</option></select></div>
-<div class="filter"><label>Etapa</label><select id="feta"><option value="">Todas</option></select></div>
-<div class="filter"><label>Período</label><select id="fper"><option value="">Todos</option></select></div>
-<div class="filter"><label>Tipo de Ensino</label><select id="ftipo"><option value="">Todos</option></select></div>
-<button class="clear" id="clear">↺ Limpar</button>
+<div class="filters" id="global-filters" aria-label="Filtros do mapa de demanda">
+<div class="filter" title="Filtra os dados pelas regiões da rede municipal."><label for="freg">Região</label><select id="freg" aria-label="Filtrar por região"><option value="">Todas</option></select><span class="filter-hint">Escolha uma região para refinar os resultados.</span></div>
+<div class="filter" title="Mostra os dados de uma unidade escolar específica."><label for="fesc">Escola</label><select id="fesc" aria-label="Filtrar por escola"><option value="">Todas</option></select><span class="filter-hint">As opções acompanham os demais filtros.</span></div>
+<div class="filter" title="Filtra por etapa de ensino, como Fase 1, Fase 2 ou Ensino Fundamental."><label for="feta">Etapa</label><select id="feta" aria-label="Filtrar por etapa de ensino"><option value="">Todas</option></select><span class="filter-hint">Selecione a etapa que deseja analisar.</span></div>
+<div class="filter" title="Filtra por período de atendimento: integral, manhã ou tarde."><label for="fper">Período</label><select id="fper" aria-label="Filtrar por período"><option value="">Todos</option></select><span class="filter-hint">Use Parcial para reunir manhã e tarde.</span></div>
+<div class="filter" title="Separa os dados conforme o tipo de ensino registrado na base."><label for="ftipo">Tipo de Ensino</label><select id="ftipo" aria-label="Filtrar por tipo de ensino"><option value="">Todos</option></select><span class="filter-hint">Refine a consulta pelo tipo de ensino.</span></div>
+<button class="clear" id="clear" title="Remove todos os filtros selecionados" aria-label="Limpar todos os filtros">↺ <span>Limpar filtros</span></button>
 </div>
 
 <section class="page active" id="overview">
@@ -124,13 +187,9 @@ padding:7px 11px;border-radius:8px;font-size:11px;color:#68798b;box-shadow:0 3px
 </div>
 <div class="card table" style="margin-top:10px">
   <h3>Detalhamento das Classes</h3>
+  <input id="schoolSearch" placeholder="Buscar etapa, período, turma ou nº da classe..." aria-label="Buscar nas classes da escola selecionada" style="padding:8px;width:min(100%,360px);border:1px solid #d7e0e8;border-radius:7px;margin-bottom:10px">
   <table><thead><tr><th>Etapa</th><th>Período</th><th>Turma</th><th>Nº Classe</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th></tr></thead>
   <tbody id="schoolDetailTable"></tbody></table>
-</div>
-<div class="card table" style="margin-top:10px">
-  <h3>Consulta de Demanda da Rede</h3>
-  <input id="schoolSearch" placeholder="Buscar escola, etapa, turma ou região..." style="padding:8px;width:min(100%,360px);border:1px solid #d7e0e8;border-radius:7px;margin-bottom:10px">
-  <table><thead><tr><th>Escola</th><th>Região</th><th>Período</th><th>Etapa</th><th>Turma</th><th>Classe</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th></tr></thead><tbody id="schoolListTable"></tbody></table>
 </div>
 </section>
 
@@ -161,9 +220,23 @@ padding:7px 11px;border-radius:8px;font-size:11px;color:#68798b;box-shadow:0 3px
 <div class="card table" style="margin-top:10px"><table><thead><tr><th>Região</th><th>Escolas</th><th>Classes</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th><th>Ocupação</th></tr></thead><tbody id="regionTable"></tbody></table></div></section>
 
 <section class="page" id="period"><div class="head"><h2>Períodos</h2><p class="muted">Comparação entre os períodos da rede.</p></div>
-<div class="card table"><table><thead><tr><th>Período</th><th>Escolas</th><th>Classes</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th><th>Ocupação</th></tr></thead><tbody id="periodTable"></tbody></table></div></section>
+<div class="kpis period-kpis" id="periodKpis"></div>
+<div class="region-charts period-main-charts">
+  <div class="card"><h3>Alunos por Período</h3><div id="periodStudentsChart" class="period-donut-layout"></div></div>
+  <div class="card period-stage-card"><h3>Alunos por Etapa e Período</h3><div class="period-legend"><span><i class="period-dot morning"></i>Manhã</span><span><i class="period-dot afternoon"></i>Tarde</span><span><i class="period-dot fulltime"></i>Integral</span></div><div id="periodStageChart"></div></div>
+</div>
+<div class="card table period-table-card"><table><thead><tr><th>Período</th><th>Escolas</th><th>Classes</th><th>Alunos</th><th>Capacidade</th><th>Vagas Disponíveis</th><th>Ocupação</th></tr></thead><tbody id="periodTable"></tbody></table></div></section>
 
-
+<section class="page" id="fulltime">
+<div class="head"><h2>Tempo Integral</h2><p class="muted">Acompanhamento das matrículas e da oferta de ensino em tempo integral na rede.</p></div>
+<div class="kpis fulltime-kpis" id="fulltimeKpis"></div>
+<div class="region-charts fulltime-charts">
+  <div class="card"><h3>Alunos em Tempo Integral por Etapa</h3><div id="fulltimeByStage" class="region-chart"></div></div>
+  <div class="card"><h3>Alunos em Tempo Integral por Região</h3><div id="fulltimeByRegion" class="region-chart"></div></div>
+</div>
+<div class="card table" style="margin-top:10px"><h3>Distribuição por Escola</h3>
+<table><thead><tr><th>Escola</th><th>Região</th><th>Etapa</th><th>Classes</th><th>Alunos</th><th>Capacidade</th><th>Ocupação</th></tr></thead><tbody id="fulltimeTable"></tbody></table></div>
+</section>
 
 <section class="page" id="vacancies">
 <div class="head"><h2>Vagas</h2><p class="muted">Consulta das vagas disponíveis registradas na base de dados, conforme o mapa individual.</p></div>
@@ -471,7 +544,7 @@ function renderSchoolDetail(){
    $('schoolSummaryTitle').textContent='Selecione uma escola';
    ['schoolStages','schoolVacanciesByStage','schoolPeriods','schoolSummary'].forEach(id=>$(id).innerHTML=msg);
    $('schoolDetailTable').innerHTML=`<tr><td colspan="7" style="text-align:center;padding:20px;color:#718096">Selecione uma escola para consultar as classes.</td></tr>`;
-   $('schoolListTable').innerHTML=`<tr><td colspan="9" style="text-align:center;padding:20px;color:#718096">Selecione uma escola para consultar a demanda.</td></tr>`;
+   $('schoolDetailTable').innerHTML=`<tr><td colspan="7" style="text-align:center;padding:20px;color:#718096">Selecione uma escola para consultar as classes.</td></tr>`;
    return;
  }
  const a=filtered().filter(d=>String(d.Escola)===String(selected));
@@ -496,10 +569,9 @@ function renderSchoolDetail(){
  const regiao=regioes.length?regioes.map(r=>nomesRegiao[String(r)]||r).join(', '):'Não informado';
  $('schoolSummary').innerHTML=`<div class="school-summary-item"><div class="muted">Região</div><div style="font-size:15px;font-weight:bold;margin-top:2px">${esc(regiao)}</div></div><div class="school-summary-item"><div class="muted">Períodos</div><div style="margin-top:3px">${Object.keys(pg).map(k=>`<span class="badge">${esc(k)}</span>`).join('')||'—'}</div></div><div class="school-summary-item"><div class="muted">Etapas</div><div style="margin-top:3px">${ordemEtapas.filter(k=>sg[k]).map(k=>`<span class="badge">${esc(k)}</span>`).join('')||'—'}</div></div>`;
  const classes=a.filter(isRealClass);
- $('schoolDetailTable').innerHTML=classes.map(d=>`<tr><td>${esc(normalizeEtapa(d.Etapa))}</td><td>${esc(normalizePeriodo(d['Período']))}</td><td>${esc(d.Turma)}</td><td>${esc(d['Nº Classe'])}</td><td class="num">${n(d.Alunos)}</td><td class="num">${n(d.Capacidade)}</td><td class="num">${n(vagasTurma(d))}</td></tr>`).join('')||'<tr><td colspan="7" style="text-align:center;padding:20px;color:#718096">Nenhuma classe encontrada com os filtros selecionados.</td></tr>';
- const q=($('schoolSearch').value||'').toLowerCase();
- const lista=classes.filter(d=>!q||[d.Escola,d.Etapa,d.Turma,d['Período'],d.Região,d['Nº Classe']].some(x=>String(x||'').toLowerCase().includes(q)));
- $('schoolListTable').innerHTML=lista.slice(0,1000).map(d=>`<tr><td>${esc(d.Escola)}</td><td>${esc(nomesRegiao[String(d.Região)]||d.Região)}</td><td>${esc(normalizePeriodo(d['Período']))}</td><td>${esc(normalizeEtapa(d.Etapa))}</td><td>${esc(d.Turma)}</td><td>${esc(d['Nº Classe'])}</td><td class="num">${n(d.Alunos)}</td><td class="num">${n(d.Capacidade)}</td><td class="num">${n(vagasTurma(d))}</td></tr>`).join('')||'<tr><td colspan="9" style="text-align:center;padding:20px;color:#718096">Nenhuma demanda encontrada com os filtros selecionados.</td></tr>';
+ const q=($('schoolSearch').value||'').trim().toLocaleLowerCase('pt-BR');
+ const classesVisiveis=classes.filter(d=>!q||[normalizeEtapa(d.Etapa),normalizePeriodo(d['Período']),d.Turma,d['Nº Classe']].some(x=>String(x||'').toLocaleLowerCase('pt-BR').includes(q)));
+ $('schoolDetailTable').innerHTML=classesVisiveis.map(d=>`<tr><td>${esc(normalizeEtapa(d.Etapa))}</td><td>${esc(normalizePeriodo(d['Período']))}</td><td>${esc(d.Turma)}</td><td>${esc(d['Nº Classe'])}</td><td class="num">${n(d.Alunos)}</td><td class="num">${n(d.Capacidade)}</td><td class="num">${n(vagasTurma(d))}</td></tr>`).join('')||'<tr><td colspan="7" style="text-align:center;padding:20px;color:#718096">Nenhuma classe encontrada com os filtros selecionados.</td></tr>'; 
 }
 function stage(){
  renderStageDetail();
@@ -589,7 +661,99 @@ function region(){
   desenharBarras('regionStudentsChart','alunos');
   desenharBarras('regionClassesChart','classes');
 }
-function period(){ $('periodTable').innerHTML=summary(group(filtered(),'Período')); }
+function period(){
+ const a=filtered();
+ const periods=['Manhã','Tarde','Integral'];
+ const stages=['Fase 1','Fase 2','1º Ano','2º Ano','3º Ano','4º Ano','5º Ano'];
+ const totals=Object.fromEntries(periods.map(p=>[p,{al:0,cap:0,vagas:0,cl:0,es:new Set()}]));
+ const stagePeriod=Object.fromEntries(stages.map(e=>[e,Object.fromEntries(periods.map(p=>[p,0]))]));
+ a.forEach(d=>{
+   const p=normalizePeriodo(d['Período']);
+   if(!totals[p]) return;
+   const q=totals[p];
+   q.al+=num(d.Alunos);q.cap+=num(d.Capacidade);q.vagas+=vagasTurma(d);
+   if(isRealClass(d)) q.cl++;
+   q.es.add(d.Escola);
+   const e=normalizeEtapa(d.Etapa);
+   if(stagePeriod[e] && periods.includes(p)) stagePeriod[e][p]+=num(d.Alunos);
+ });
+ const m=metrics(a);
+ $('periodKpis').innerHTML=[
+  ['👥','Alunos Matriculados',n(m.al)],
+  ['📚','Classes',n(m.cl)],
+  ['↕','Vagas Disponíveis',n(m.sa)],
+  ['%','Ocupação',m.oc.toFixed(1).replace('.',',')+'%']
+ ].map(x=>`<div class="kpi"><small>${x[0]} ${x[1]}</small><strong>${x[2]}</strong></div>`).join('');
+ const drawPeriodBars=(id,field)=>{
+   const max=Math.max(...periods.map(p=>totals[p][field]),1);
+   $(id).innerHTML=periods.map(p=>{
+     const value=totals[p][field],width=value>0?Math.max(value/max*100,1):0;
+     return `<div class="region-bar-row"><span class="region-bar-label">${p}</span><div class="region-bar-track"><div class="region-bar-fill" style="width:${width}%"></div></div><span class="region-bar-value">${n(value)}</span></div>`;
+   }).join('');
+ };
+ const totalPeriodStudents=periods.reduce((sum,p)=>sum+totals[p].al,0);
+ const periodColors=['#2d86d8','#55a6e8','#55c98b'];
+ let offset=0;
+ const slices=periods.map((p,i)=>{const pct=totalPeriodStudents?totals[p].al/totalPeriodStudents*100:0;const start=offset;offset+=pct;return `${periodColors[i]} ${start}% ${offset}%`;});
+ const donutBackground=totalPeriodStudents?`conic-gradient(${slices.join(',')})`:'#edf2f6';
+ $('periodStudentsChart').innerHTML=`<div class="period-donut" style="background:${donutBackground}"><div class="period-donut-center">${n(totalPeriodStudents)}<small>alunos</small></div></div><div class="period-donut-legend">${periods.map((p,i)=>`<div class="period-donut-legend-row"><i class="period-donut-dot" style="background:${periodColors[i]}"></i><span>${p}</span><b>${n(totals[p].al)}</b></div>`).join('')}</div>`;
+ const maxStage=Math.max(...stages.map(e=>periods.reduce((sum,p)=>sum+stagePeriod[e][p],0)),1);
+ $('periodStageChart').innerHTML=stages.map(e=>{
+   const vals=stagePeriod[e],total=periods.reduce((sum,p)=>sum+vals[p],0);
+   const segs=periods.map((p,i)=>`<div class="period-stage-segment ${['morning','afternoon','fulltime'][i]}" title="${p}: ${n(vals[p])} alunos" style="width:${total?vals[p]/maxStage*100:0}%"></div>`).join('');
+   return `<div class="period-stage-row"><span class="period-stage-label">${e}</span><div class="period-stage-track">${segs}</div><span class="period-stage-total">${n(total)}</span></div>`;
+ }).join('');
+ $('periodTable').innerHTML=periods.map(p=>{
+   const q=totals[p],occ=q.cap?q.al/q.cap*100:0;
+   return `<tr><td>${p}</td><td class="num">${n(q.es.size)}</td><td class="num">${n(q.cl)}</td><td class="num">${n(q.al)}</td><td class="num">${n(q.cap)}</td><td class="num">${n(q.vagas)}</td><td class="num">${occ.toFixed(1).replace('.',',')}%</td></tr>`;
+ }).join('');
+}
+
+function fulltime(){
+ // A página é dedicada ao período Integral. Os demais filtros globais continuam valendo,
+ // mas o filtro global de Período é ignorado para não esvaziar a página por seleção de Manhã/Tarde.
+ const selected={};
+ for(const [id,k] of Object.entries(fields)) if(id!=='fper') selected[k]=$(id).value;
+ const a=DATA.filter(d=>normalizePeriodo(d['Período'])==='Integral' && Object.entries(selected).every(([k,v])=>!v || filterValue(d,k)===v));
+ const valid=a.filter(isRealClass);
+ const m=metrics(valid);
+ $('fulltimeKpis').innerHTML=[
+  ['👥','Alunos em Tempo Integral',n(m.al)],
+  ['📚','Classes em Tempo Integral',n(m.cl)],
+  ['🏫','Escolas com Tempo Integral',n(m.es)],
+  ['▦','Capacidade',n(m.cap)],
+  ['%','Ocupação',m.oc.toFixed(1).replace('.',',')+'%']
+ ].map(x=>`<div class="kpi"><small>${x[0]} ${x[1]}</small><strong>${x[2]}</strong></div>`).join('');
+ const stages=['Fase 1','Fase 2','1º Ano','2º Ano','3º Ano','4º Ano','5º Ano'];
+ const regions=['Norte','Sul','Leste','Oeste','Centro'];
+ const sumBy=(rows,key,ordered)=>{
+   const out=Object.fromEntries(ordered.map(x=>[x,0]));
+   rows.forEach(d=>{const v=key==='Etapa'?normalizeEtapa(d[key]):key==='Região'?(nomesRegiao[String(d[key])]||String(d[key]||'').trim()):String(d[key]||'').trim();if(v in out)out[v]+=num(d.Alunos)});
+   return out;
+ };
+ const drawDonut=(id,vals,order)=>{
+   const palette=['#2185e6','#55c98b','#f2b84b','#8b72d9','#ef7d68','#42b8bd','#718096'];
+   const total=order.reduce((sum,label)=>sum+(vals[label]||0),0);
+   let cursor=0;
+   const slices=order.map((label,i)=>{const value=vals[label]||0;const start=cursor;cursor+=total?value/total*100:0;return {label,value,color:palette[i%palette.length],start,end:cursor};});
+   const gradient=total?slices.map(x=>`${x.color} ${x.start}% ${x.end}%`).join(', '):'#e8edf2 0% 100%';
+   $(id).innerHTML=`<div class="period-donut-layout"><div class="period-donut" style="background:conic-gradient(${gradient})"><div class="period-donut-center">${n(total)}<small>alunos</small></div></div><div class="period-donut-legend">${slices.map(x=>`<div class="period-donut-legend-row"><i class="period-donut-dot" style="background:${x.color}"></i><span>${esc(x.label)}</span><b>${n(x.value)}</b></div>`).join('')}</div></div>`;
+ };
+ drawDonut('fulltimeByStage',sumBy(valid,'Etapa',stages),stages);
+ drawDonut('fulltimeByRegion',sumBy(valid,'Região',regions),regions);
+ const bySchool={};
+ valid.forEach(d=>{
+   const school=String(d.Escola||'Não informada');
+   bySchool[school]??={region:nomesRegiao[String(d['Região'])]||String(d['Região']||'—'),stages:{},al:0,cap:0,classes:0};
+   const q=bySchool[school],stage=normalizeEtapa(d.Etapa)||'Não informada';
+   q.stages[stage]??={al:0,cap:0,classes:0};
+   q.al+=num(d.Alunos);q.cap+=num(d.Capacidade);q.classes++;
+   q.stages[stage].al+=num(d.Alunos);q.stages[stage].cap+=num(d.Capacidade);q.stages[stage].classes++;
+ });
+ const rows=Object.entries(bySchool).flatMap(([school,q])=>Object.entries(q.stages).map(([stage,v])=>({school,region:q.region,stage,...v,occ:v.cap?v.al/v.cap*100:0})))
+   .sort((a,b)=>a.school.localeCompare(b.school,'pt-BR')||stages.indexOf(a.stage)-stages.indexOf(b.stage));
+ $('fulltimeTable').innerHTML=rows.length?rows.map(r=>`<tr><td>${esc(r.school)}</td><td>${esc(r.region)}</td><td>${esc(r.stage)}</td><td class="num">${n(r.classes)}</td><td class="num">${n(r.al)}</td><td class="num">${n(r.cap)}</td><td class="num">${r.occ.toFixed(1).replace('.',',')}%</td></tr>`).join(''):`<tr><td colspan="7" class="fulltime-table-empty">Não há registros de tempo integral para os filtros selecionados.</td></tr>`;
+}
 
 function dataPage(){
  const a=filtered(),fs=['Ano','Cod CIE','Escola','Região','Período','Tipo de Ensino','Etapa','Turma','Nº Classe','Alunos','Educação Especial','Transporte','Retidos','Capacidade'];
@@ -615,11 +779,11 @@ function vacancies(){
  draw('vacancyByRegion',regionTotals);
  $('vacancyTable').innerHTML=a.slice(0,1000).map(d=>`<tr><td>${esc(d.Escola)}</td><td>${esc(nomesRegiao[String(d.Região)]||d.Região)}</td><td>${esc(normalizeEtapa(d.Etapa))}</td><td>${esc(normalizePeriodo(d['Período']))}</td><td>${esc(d.Turma)}</td><td>${esc(d['Nº Classe'])}</td><td class="num">${n(d.Alunos)}</td><td class="num">${n(d.Capacidade)}</td><td class="num">${n(d._v)}</td></tr>`).join('');
 }
-function render(p){if(p==='overview')overview();if(p==='school')school();if(p==='stage')stage();if(p==='region')region();if(p==='period')period();if(p==='vacancies')vacancies();if(p==='data')dataPage();}
+function render(p){if(p==='overview')overview();if(p==='school')school();if(p==='stage')stage();if(p==='region')region();if(p==='period')period();if(p==='fulltime')fulltime();if(p==='vacancies')vacancies();if(p==='data')dataPage();}
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$(b.dataset.page).classList.add('active');
- document.getElementById('global-filters').style.display = (b.dataset.page === 'contacts') ? 'none' : '';
+ document.getElementById('global-filters').style.display = ['contacts','fulltime'].includes(b.dataset.page) ? 'none' : '';
  render(b.dataset.page);
 });
 Object.keys(fields).forEach(id=>$(id).onchange=()=>{
