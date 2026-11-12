@@ -116,9 +116,30 @@ padding:7px 11px;border-radius:8px;font-size:11px;color:#68798b;box-shadow:0 3px
 .fulltime-kpis{grid-template-columns:repeat(5,minmax(0,1fr));margin-bottom:10px}
 .fulltime-charts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .fulltime-charts .card{min-width:0}
-.fulltime-charts .region-chart{min-height:180px}
+.fulltime-charts .region-chart{min-height:210px}
+/* Tempo Integral: centro analítico e legendas com maior hierarquia visual */
+#fulltime .period-donut-layout{gap:34px;min-height:230px;flex-wrap:nowrap}
+#fulltime .period-donut{width:174px;height:174px;flex-basis:174px}
+#fulltime .period-donut:after{width:112px;height:112px}
+#fulltime .period-donut-center{display:none}
+#fulltime .period-donut-labels{position:absolute;inset:0;width:100%;height:100%;z-index:2;overflow:visible;pointer-events:none}
+#fulltime .period-donut-labels text{font-size:10px;font-weight:800;fill:#fff;text-anchor:middle;dominant-baseline:middle;paint-order:stroke;stroke:rgba(20,36,58,.24);stroke-width:2px;stroke-linejoin:round}
+#fulltime .period-donut-legend{min-width:180px;flex:1}
+#fulltime .period-donut-legend-row{grid-template-columns:14px minmax(0,1fr) auto;gap:11px;align-items:center;margin:12px 0;font-size:14px;color:#24364b}
+#fulltime .period-donut-dot{width:14px;height:14px;border-radius:4px}
+#fulltime .period-donut-legend-row b{font-size:15px;font-weight:700;color:#14243a;font-variant-numeric:tabular-nums}
+@media(max-width:1150px){#fulltime .period-donut-layout{gap:20px}#fulltime .period-donut{width:150px;height:150px;flex-basis:150px}#fulltime .period-donut:after{width:98px;height:98px}#fulltime .period-donut-legend-row{font-size:13px;margin:10px 0}#fulltime .period-donut-legend-row b{font-size:14px}}
+@media(max-width:760px){#fulltime .period-donut-layout{flex-wrap:wrap;gap:12px}#fulltime .period-donut-legend{min-width:100%;}}
 .fulltime-table-empty{text-align:center;color:#718198;padding:18px}
 @media(max-width:1050px){.fulltime-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.fulltime-charts{grid-template-columns:1fr}}
+
+/* Card compacto de distribuição por período na faixa de indicadores */
+.period-distribution-kpi{padding:10px 12px}
+.period-kpi-list{display:grid;gap:4px;margin-top:5px}
+.period-kpi-row{display:flex;align-items:center;justify-content:space-between;font-size:12px;line-height:1.25;color:#526579}
+.period-kpi-row span{display:flex;align-items:center;gap:6px}
+.period-kpi-row b{font-size:15px;color:#14243a;font-weight:700}
+.period-kpi-dot{display:inline-block;width:8px;height:8px;border-radius:3px}
 </style>
 
 </head>
@@ -461,8 +482,14 @@ function filtered(){
   }));
 }
 function isRealClass(d){
- const etapa=String(d['Etapa']??'').trim().toLowerCase();
- return etapa!=='sala disp.';
+ // Considera somente as etapas oficiais do painel, incluindo suas versões integrais.
+ // normalizeEtapa remove o sufixo Int., permitindo validar as duas modalidades
+ // sem contar registros com etapa vazia, inválida ou Sala Disp.
+ const etapa=normalizeEtapa(d['Etapa']);
+ const etapasValidas=new Set([
+  'Fase 1','Fase 2','1º Ano','2º Ano','3º Ano','4º Ano','5º Ano'
+ ]);
+ return etapasValidas.has(etapa);
 }
 // Usa o valor oficial de vagas já calculado na base, conforme o mapa individual.
 // Não recalcula vagas pela diferença entre capacidade e alunos.
@@ -499,7 +526,7 @@ function summary(g, order){
 function overview(){
  const a=filtered(),m=metrics(a);
  $('kpis').innerHTML=[
-  ['👥','Nº de Alunos',n(m.al)],['📚','Nº de Classes',n(m.cl)],['🏫','Capacidade Total',n(m.cap)],['↕','Vagas Disponíveis',n(m.sa)],['%','Ocupação',m.oc.toFixed(1).replace('.',',')+'%']
+  ['👥','Nº de Alunos',n(m.al)],['📚','Nº de Classes',n(m.cl)],['🏫','Capacidade Total',n(m.cap)],['%','Ocupação',m.oc.toFixed(1).replace('.',',')+'%']
  ].map(x=>`<div class="kpi"><small>${x[0]} ${x[1]}</small><strong>${x[2]}</strong></div>`).join('');
  const sg=group(a,'Etapa'),mx=Math.max(...Object.values(sg).map(x=>x.al),1);
  const ordemEtapas=['Fase 1','Fase 2','1º Ano','2º Ano','3º Ano','4º Ano','5º Ano'];
@@ -679,11 +706,13 @@ function period(){
  });
  const m=metrics(a);
  $('periodKpis').innerHTML=[
-  ['👥','Alunos Matriculados',n(m.al)],
-  ['📚','Classes',n(m.cl)],
-  ['↕','Vagas Disponíveis',n(m.sa)],
-  ['%','Ocupação',m.oc.toFixed(1).replace('.',',')+'%']
- ].map(x=>`<div class="kpi"><small>${x[0]} ${x[1]}</small><strong>${x[2]}</strong></div>`).join('');
+  `<div class="kpi"><small>👥 Alunos Matriculados</small><strong>${n(m.al)}</strong></div>`,
+  `<div class="kpi"><small>📚 Classes</small><strong>${n(m.cl)}</strong></div>`,
+  `<div class="kpi period-distribution-kpi"><small>👥 Alunos por Período</small><div class="period-kpi-list">
+    ${periods.map((p,i)=>`<div class="period-kpi-row"><span><i class="period-kpi-dot" style="background:${['#2d86d8','#55a6e8','#55c98b'][i]}"></i>${p}</span><b>${n(totals[p].al)}</b></div>`).join('')}
+  </div></div>`,
+  `<div class="kpi"><small>% Ocupação</small><strong>${m.oc.toFixed(1).replace('.',',')}%</strong></div>`
+ ].join('');
  const drawPeriodBars=(id,field)=>{
    const max=Math.max(...periods.map(p=>totals[p][field]),1);
    $(id).innerHTML=periods.map(p=>{
@@ -737,7 +766,13 @@ function fulltime(){
    let cursor=0;
    const slices=order.map((label,i)=>{const value=vals[label]||0;const start=cursor;cursor+=total?value/total*100:0;return {label,value,color:palette[i%palette.length],start,end:cursor};});
    const gradient=total?slices.map(x=>`${x.color} ${x.start}% ${x.end}%`).join(', '):'#e8edf2 0% 100%';
-   $(id).innerHTML=`<div class="period-donut-layout"><div class="period-donut" style="background:conic-gradient(${gradient})"><div class="period-donut-center">${n(total)}<small>alunos</small></div></div><div class="period-donut-legend">${slices.map(x=>`<div class="period-donut-legend-row"><i class="period-donut-dot" style="background:${x.color}"></i><span>${esc(x.label)}</span><b>${n(x.value)}</b></div>`).join('')}</div></div>`;
+   const labels=slices.filter(x=>total&&x.value&&((x.end-x.start)>=5)).map(x=>{
+     const angle=((x.start+x.end)/2)*Math.PI/50-Math.PI/2;
+     const cx=87+71*Math.cos(angle),cy=87+71*Math.sin(angle);
+     return `<text x="${cx.toFixed(1)}" y="${cy.toFixed(1)}">${n(x.value)}</text>`;
+   }).join('');
+   const svg=`<svg class="period-donut-labels" viewBox="0 0 174 174" aria-hidden="true">${labels}</svg>`;
+   $(id).innerHTML=`<div class="period-donut-layout"><div class="period-donut" style="background:conic-gradient(${gradient})">${svg}</div><div class="period-donut-legend">${slices.map(x=>`<div class="period-donut-legend-row"><i class="period-donut-dot" style="background:${x.color}"></i><span>${esc(x.label)}</span><b>${n(x.value)}</b></div>`).join('')}</div></div>`;
  };
  drawDonut('fulltimeByStage',sumBy(valid,'Etapa',stages),stages);
  drawDonut('fulltimeByRegion',sumBy(valid,'Região',regions),regions);
