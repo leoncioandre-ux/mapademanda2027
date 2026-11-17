@@ -108,6 +108,7 @@ table{width:100%;border-collapse:collapse;font-size:13px} .table{overflow:auto} 
 @media(prefers-reduced-motion:reduce){.filter,.filter-hint,.filter-help,.filter select,.clear,.page.active .head,.page.active .kpi,.page.active .card,.page.active .insight{animation:none!important;transition:none!important}}
 @media(max-width:1050px){.filter-hint{display:none}}
 
+.mobile-menu-close{display:none}
 /* Layout responsivo para celulares e tablets */
 .mobile-menu-toggle,.mobile-menu-backdrop{display:none}
 @media(max-width:760px){
@@ -188,6 +189,7 @@ padding:7px 11px;border-radius:8px;font-size:11px;color:#68798b;box-shadow:0 3px
 </head>
 <body>
 <aside>
+<button id="mobileMenuClose" class="mobile-menu-close" type="button" aria-label="Fechar menu">×</button>
 <div class="brand"><div class="brand-title">REDE MUNICIPAL</div><span>Secretaria Municipal de Educação</span></div>
 <nav>
 <button data-page="overview" class="active"><span class="nav-icon"><svg viewBox="0 0 24 24"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></span>Visão Geral</button>
@@ -202,10 +204,12 @@ padding:7px 11px;border-radius:8px;font-size:11px;color:#68798b;box-shadow:0 3px
 <button data-page="about"><span class="nav-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10v6"/><path d="M12 7h.01"/></svg></span>Sobre</button>
 </nav>
 </aside>
+<div id="mobileMenuBackdrop" class="mobile-menu-backdrop" aria-hidden="true"></div>
 
 <main>
 <div class="source-badge">Fonte: <a href="https://docs.google.com/spreadsheets/d/1mAwMQr5byOsyay6Uj42-HFEHas5Aw0977K-EvtuQeNs/edit?gid=0#gid=0" target="_blank">Google Sheets · data_rede_geral_dash</a></div>
 <div class="top">
+  <button id="mobileMenuToggle" class="mobile-menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
   <div class="header-brand">
     <img class="prefeitura-logo" src="https://www3.franca.sp.gov.br/images/8fa208a68514fba96a55c7d397862c8b.png" alt="Prefeitura de Franca">
     <div class="header-divider"></div>
@@ -861,6 +865,11 @@ function vacancies(){
  $('vacancyTable').innerHTML=a.slice(0,1000).map(d=>`<tr><td>${esc(d.Escola)}</td><td>${esc(nomesRegiao[String(d.Região)]||d.Região)}</td><td>${esc(normalizeEtapa(d.Etapa))}</td><td>${esc(normalizePeriodo(d['Período']))}</td><td>${esc(d.Turma)}</td><td>${esc(d['Nº Classe'])}</td><td class="num">${n(d.Alunos)}</td><td class="num">${n(d.Capacidade)}</td><td class="num">${n(d._v)}</td></tr>`).join('');
 }
 function render(p){if(p==='overview')overview();if(p==='school')school();if(p==='stage')stage();if(p==='region')region();if(p==='period')period();if(p==='fulltime')fulltime();if(p==='vacancies')vacancies();if(p==='data')dataPage();}
+const closeMobileMenu=()=>{document.body.classList.remove('mobile-menu-open');$('mobileMenuToggle').setAttribute('aria-expanded','false');$('mobileMenuToggle').setAttribute('aria-label','Abrir menu');};
+ $('mobileMenuClose').onclick=closeMobileMenu;
+$('mobileMenuToggle').onclick=()=>{const open=!document.body.classList.contains('mobile-menu-open');document.body.classList.toggle('mobile-menu-open',open);$('mobileMenuToggle').setAttribute('aria-expanded',String(open));$('mobileMenuToggle').setAttribute('aria-label',open?'Fechar menu':'Abrir menu');};
+const mobileMenuBackdrop=$('mobileMenuBackdrop');
+ if(mobileMenuBackdrop) mobileMenuBackdrop.onclick=closeMobileMenu;
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$(b.dataset.page).classList.add('active');
