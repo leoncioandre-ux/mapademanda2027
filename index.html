@@ -114,6 +114,7 @@ table{width:100%;border-collapse:collapse;font-size:13px} .table{overflow:auto} 
 @media(max-width:760px){
  html,body{width:100%;max-width:100%;overflow-x:hidden}
  aside{width:min(82vw,300px);max-width:300px;transform:translateX(-105%);transition:transform .25s ease;z-index:50;overflow-y:auto;box-shadow:8px 0 28px #071b2d35}
+ .mobile-menu-close{display:flex;position:absolute;top:10px;right:10px;width:34px;height:34px;align-items:center;justify-content:center;border:1px solid #ffffff55;border-radius:8px;background:#ffffff18;color:#fff;font-size:25px;line-height:1;cursor:pointer;z-index:2}
  body.mobile-menu-open aside{transform:translateX(0)}
  .mobile-menu-backdrop{display:block;position:fixed;inset:0;background:rgba(8,24,40,.48);z-index:49;opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s ease}
  body.mobile-menu-open .mobile-menu-backdrop{opacity:1;visibility:visible}
@@ -874,6 +875,7 @@ document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$(b.dataset.page).classList.add('active');
  document.getElementById('global-filters').style.display = ['contacts','fulltime'].includes(b.dataset.page) ? 'none' : '';
+ closeMobileMenu();
  render(b.dataset.page);
 });
 Object.keys(fields).forEach(id=>$(id).onchange=()=>{
